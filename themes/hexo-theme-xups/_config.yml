@@ -14,7 +14,7 @@ menu:
     icon: icon-home
   lab:
     name: 编程
-    link: /categories/codding/
+    link: /categories/coding/
     icon: icon-lab
   about:
     name: 关于

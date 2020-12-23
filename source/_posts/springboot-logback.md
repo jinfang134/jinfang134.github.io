@@ -1,11 +1,12 @@
 ---
 title: Springboot中使用logback输出日志中文乱码
 categories: 
-  - codding
+  - coding
 tags: 
   - sourcemap
   - webpack
 ---
+
 在Springboot中使用logback输出日志时，中文变成了`？`乱码，第一反应是编码问题.
 解决方法：
 >设置charset, 在encoder 中增加一行 `<charset>UTF-8</charset>`，重新启动系统，日志中中文显示正常了。

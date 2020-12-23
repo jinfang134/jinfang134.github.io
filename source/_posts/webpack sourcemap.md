@@ -1,7 +1,7 @@
 ---
 title: Webpack SourceMap 配置
 categories: 
-  - codding
+  - coding
 tags: 
   - sourcemap
   - webpack
