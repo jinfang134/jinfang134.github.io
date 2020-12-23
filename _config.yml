@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
+title: On the road
+subtitle: 'Keep hard,Keep foolish'
+description: 'My blog'
+keywords: 
+author: Zuo jinfang
 language: en
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: http://jinfang134.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
