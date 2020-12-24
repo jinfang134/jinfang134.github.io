@@ -4,10 +4,9 @@ author: zuo_ji
 categories:
   - Web技术
   - coding
-tags:
+tags: 
   - js
   - 前端
-thumbnail:
 
 ---
 
