@@ -14,7 +14,7 @@ categories:
 
 1. 在`home` 目录下建一个 `workspace` 目录，目录里放你的springboot打包以后的jar包，如：`demo.jar`
 2. 在`/etc/systemd/system/` 下添加一个新文件 `demo.service`
-```
+```properties
 [Unit]
 Description=My Webapp Java REST Service
 [Service]
@@ -34,14 +34,14 @@ RestartSec=5
 WantedBy=multi-user.target
 ```
 3. 依次执行以下命令
-```
+```sh
 sudo systemctl daemon-reload
 sudo systemctl enable demo.service
 sudo systemctl start demo
 sudo systemctl status demo
 ```
 如果一切正常的话，应用已经启动好了，你可以使用以下命令查看日志
-```
+```sh
 sudo journalctl -f -u demo
 ```
 
