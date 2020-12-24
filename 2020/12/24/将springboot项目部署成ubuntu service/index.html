@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <title>常用工具换源 | On the road</title>
+    <title>将springboot项目部署成ubuntu service | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -60,19 +60,19 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/2020/12/23/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
+            <li rel="/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/2020/12/23/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
+            <li rel="/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/index.html" class="item ">
                 <a href="/categories/coding/" title="编程" class="icon-lab">&nbsp;编程</a>
             </li>
             
-            <li rel="/2020/12/23/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
+            <li rel="/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/2020/12/23/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
+            <li rel="/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -123,35 +123,27 @@ var _hmt = _hmt || [];
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>常用工具换源</span></h3>
+        <h3 class="post-title"><span>将springboot项目部署成ubuntu service</span></h3>
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-23T17:11:15.000Z">2020-12-23</time>
+        <time datetime="2020-12-24T16:58:02.000Z">2020-12-24</time>
     </p>
     <div class="post-content">
-        <p>由于长城的存在，一些开发工具在国内就不是那么好使，默认的源都在国外，网速很慢，所以需要进行换源．</p>
+        <p>在部署springboot项目时，为了运行维护的方便，可将其部署为ubuntu service,并且可随系统启动而自动启动，本文将介绍一种比较简单的方式来实现此功能。</p>
 <a id="more"></a>
-<h2 id="Maven换源"><a href="#Maven换源" class="headerlink" title="Maven换源"></a>Maven换源</h2><p>maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。<br>修改maven根目录下的conf文件夹中的setting.xml文件，内容如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>之后就能享受如飞的maven下载速度。</p>
-<h2 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h2><h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>全称Node Package Manager，是node.js的模块依赖管理工具。由于npm的源在国外，所以国内用户使用起来各种不方便。下面整理出了一部分国内优秀的npm镜像资源，国内用户可以选择使用。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h3 id="国内优秀npm镜像"><a href="#国内优秀npm镜像" class="headerlink" title="国内优秀npm镜像"></a>国内优秀npm镜像</h3><ul>
-<li> 淘宝npm镜像<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">搜索地址：http:&#x2F;&#x2F;npm.taobao.org&#x2F;</span><br><span class="line">registry地址：http:&#x2F;&#x2F;registry.npm.taobao.org&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li> cnpmjs镜像<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">搜索地址：http:&#x2F;&#x2F;cnpmjs.org&#x2F;</span><br><span class="line">registry地址：http:&#x2F;&#x2F;r.cnpmjs.org&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li>如何使用<br>有很多方法来配置npm<br>的registry地址，下面根据不同情境列出几种比较常用的方法。以淘宝npm镜像举例：<ol>
-<li>临时使用<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express</span><br></pre></td></tr></table></figure></li>
-<li>持久使用<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或npm info express</span><br></pre></td></tr></table></figure></li>
-<li>通过cnpm使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">&#x2F;&#x2F; 使用cnpm install expresstall express</span><br></pre></td></tr></table></figure>
-来源：<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/0deb70e6f395">http://www.jianshu.com/p/0deb70e6f395</a></li>
-</ol>
-</li>
-</ul>
-<h2 id="ubuntu改源"><a href="#ubuntu改源" class="headerlink" title="ubuntu改源"></a>ubuntu改源</h2><p><a target="_blank" rel="noopener" href="http://mirrors.163.com/.help/ubuntu.html">网易源</a></p>
-<h2 id="Ruby-改源"><a href="#Ruby-改源" class="headerlink" title="Ruby 改源"></a>Ruby 改源</h2><p>RubyGems 一直以来在国内都非常难访问到，在本地你或许可以翻墙，当你要发布上线的时候，你就很难搞了！更多细节访问 <a target="_blank" rel="noopener" href="http://gems.ruby-china.org/">ruby-china</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gem sources --add https:&#x2F;&#x2F;gems.ruby-china.org&#x2F; --remove https:&#x2F;&#x2F;rubygems.org&#x2F;</span><br><span class="line">$ gem sources -l</span><br><span class="line">https:&#x2F;&#x2F;gems.ruby-china.org</span><br><span class="line"># 确保只有 gems.ruby-china.org</span><br><span class="line"># 更新缓存</span><br><span class="line">gem sources -u </span><br></pre></td></tr></table></figure>
 
+<ol>
+<li>在<code>home</code> 目录下建一个 <code>workspace</code> 目录，目录里放你的springboot打包以后的jar包，如：<code>demo.jar</code></li>
+<li>在<code>/etc/systemd/system/</code> 下添加一个新文件 <code>demo.service</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description&#x3D;My Webapp Java REST Service</span><br><span class="line">[Service]</span><br><span class="line">User&#x3D;ubuntu</span><br><span class="line"># The configuration file application.properties should be here:</span><br><span class="line">#change this to your workspace</span><br><span class="line">WorkingDirectory&#x3D;&#x2F;home&#x2F;ubuntu&#x2F;workspace</span><br><span class="line">#path to executable. </span><br><span class="line">#executable is a bash script which calls jar file</span><br><span class="line"># please change your java path</span><br><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;java -jar &#x2F;home&#x2F;ubuntu&#x2F;workspace&#x2F;demo.jar</span><br><span class="line">SuccessExitStatus&#x3D;143</span><br><span class="line">TimeoutStopSec&#x3D;10</span><br><span class="line">Restart&#x3D;on-failure</span><br><span class="line">RestartSec&#x3D;5</span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure></li>
+<li>依次执行以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl enable demo.service</span><br><span class="line">sudo systemctl start demo</span><br><span class="line">sudo systemctl status demo</span><br></pre></td></tr></table></figure>
+如果一切正常的话，应用已经启动好了，你可以使用以下命令查看日志<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo journalctl -f -u demo</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dzone.com/articles/run-your-java-application-as-a-service-on-ubuntu">Run Your Java App as a Service on Ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html">Springboot doc</a></li>
+</ul>
 
     </div>
     <p class="post-meta">
@@ -162,7 +154,9 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/npm/" title="npm">npm</a>
+        <a href="/tags/springboot/" title="springboot">springboot</a> / 
+    
+        <a href="/tags/ubuntu/" title="ubuntu">ubuntu</a>
     
 
         </span>
@@ -188,20 +182,16 @@ var _hmt = _hmt || [];
     
     <span class="prev fl">
         上一篇<br >
-        <a href="/2020/12/24/webpack%20sourcemap/">
-            
-                Webpack SourceMap 配置
-            
-        </a>
+        <a href="javascript: void(0);">没有上一篇了</a>
     </span>
     
 
     
     <span class="next fr">
         下一篇<br >
-        <a href="/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
+        <a href="/2020/12/24/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
             
-                常用软件安装
+                ElementUI之el-upload实现base64上传
             
         </a>
     </span>
@@ -280,7 +270,7 @@ var _hmt = _hmt || [];
   <script>
   JELON.Comment({
     container: 'comments',
-    label: '常用工具换源' || '2020/12/23/常用工具换源/',
+    label: '将springboot项目部署成ubuntu service' || '2020/12/24/将springboot项目部署成ubuntu service/',
     owner: 'jinfang134',
     repo: 'blog_comments',
     clientId: 'b08ed25e52c57993e69c',
@@ -413,7 +403,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1608800521056.js"></script>
+<script src="/js/main.js?v=1608800521051.js"></script>
 
 </body>
 </html>
