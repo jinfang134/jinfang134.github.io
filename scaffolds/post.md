@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
-author:
+author: zuo_ji
 tags:
 categories:
     - Web技术
