@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-25T06:19:15.112Z">2020-12-25</time>
+        <time datetime="2020-12-25T09:27:52.557Z">2020-12-25</time>
     </p>
     <div class="post-content">
         <h2 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">dateFormat  YYYY-MM-DD</span><br><span class="line">title Adding GANTT diagram to mermaid</span><br><span class="line">excludes weekdays 2014-01-10</span><br><span class="line"></span><br><span class="line">section A section</span><br><span class="line">Completed task            :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">Active task               :active,  des2, 2014-01-09, 3d</span><br><span class="line">Future task               :         des3, after des2, 5d</span><br><span class="line">Future task2               :         des4, after des2, 5d</span><br></pre></td></tr></table></figure>
@@ -141,9 +141,97 @@ Completed task            :done,    des1, 2014-01-06,2014-01-08
 Active task               :active,  des2, 2014-01-09, 3d
 Future task               :         des3, after des2, 5d
 Future task2               :         des4, after des2, 5d</pre>
+<a id="more"></a>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    Alice-&gt;&gt;Bob: Hello Bob, how are you?</span><br><span class="line">    alt is sick</span><br><span class="line">        Bob-&gt;&gt;Alice: Not so good :(</span><br><span class="line">    else is well</span><br><span class="line">        Bob-&gt;&gt;Alice: Feeling fresh like a daisy</span><br><span class="line">    end</span><br><span class="line">    opt Extra response</span><br><span class="line">        Bob-&gt;&gt;Alice: Thanks for asking</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
 
+<pre class="mermaid">sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end</pre>
+<pre class="mermaid">sequenceDiagram
+    hue-hr-recruiting->>lambda(dev): webhook
+    lambda(dev) -->>lambda(dev): Sync source code to s3 bucket.
+    lambda(dev) ->>+codebuild: Trigger a build
+    codebuild -->>-lambda(dev): success
+    lambda(dev) ->> hpm-version: Update commit sha of `hue-hr-recruiting` in version.yml</pre>
+
+<pre class="mermaid">sequenceDiagram
+    hpm-version ->>lambda: webhook: push a new release tag
+    loop Every projects in version.yml
+        lambda->>+lambda: sync source code to s3 bucket in prod env for current tag.
+    end   
+    lambda ->> +code pipeline: Trigger a build
+    code pipeline ->> +slack: request approval
+    slack -->> -code pipeline: approval
+    loop Every projects in version.yml
+        code pipeline ->> +codebuild: build (buildspec.yml)
+        codebuild -->> -code pipeline: success
+    end
+    code pipeline -->> -lambda: success</pre>
+
+
+
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><h3 id="利用mermaid来画思维导图"><a href="#利用mermaid来画思维导图" class="headerlink" title="利用mermaid来画思维导图"></a>利用mermaid来画思维导图</h3><pre class="mermaid">    graph TD
+    A(工业用地效率)-->B1(土地利用强度)
+    A-->B2(土地经济效益)
+    B1-->C1(容积率)
+    B1-->C2(建筑系数)
+    B1-->C3(亩均固定资本投入)
+    B2-->D1(亩均工业产值)
+    B2-->D2(亩均税收)</pre>
+
+<pre class="mermaid">graph LR
+KaTex--> A(标记 Accents)
+A-->B(撇,估计,均值,向量等写于符号上下的标记)
+KaTex--> 分隔符_Delimiters
+分隔符_Delimiters-->小中大括号,竖杠,绝对值等分隔符的反斜杠写法
+KaTex--> 公式组_Enviroments
+公式组_Enviroments-->C(.....)
+B --> E(sdfdfdsf)
+B --> E2(test)
+B --> E3(test sdfsdf)
+B --> E4(test dfewrwer)
+E4 --> F("test content")</pre>
+
+<blockquote class="pullquote mindmap mindmap-md"><ul>
+<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html">Hexo 的思维导图插件</a><ul>
+<li>前言</li>
+<li>使用方法<ul>
+<li>一</li>
+<li>二</li>
+<li>三</li>
+</ul>
+</li>
+<li>太长不看</li>
+<li>参考资料</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e^&#123;i\pi&#125; + 1 &#x3D; 0</span><br></pre></td></tr></table></figure>
+<!-- $$
+f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi \xi x} \,d\xi
+$$ -->
+
+<p>:joy:</p>
+<hr>
+<!-- <script>
+alert("hello")
+</script> -->
+
+
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/sequenceDiagram">mermaid-js</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-math">hexo-math</a></li>
+</ol>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
@@ -411,7 +499,7 @@ Future task2               :         des4, after des2, 5d</pre>
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="../../../../js/main.js?v=1608877169386.js"></script>
+<script src="../../../../js/main.js?v=1608888486456.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
