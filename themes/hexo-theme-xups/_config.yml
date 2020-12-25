@@ -135,7 +135,7 @@ CDN:
 # 是否开启搜索
 #----------------------------
 search:
-  enable: true
+  enable: false
   placeholder: 输入关键字搜索
 
 
