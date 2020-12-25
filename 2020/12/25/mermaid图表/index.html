@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-25T09:27:52.557Z">2020-12-25</time>
+        <time datetime="2020-12-25T09:46:12.936Z">2020-12-25</time>
     </p>
     <div class="post-content">
         <h2 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">dateFormat  YYYY-MM-DD</span><br><span class="line">title Adding GANTT diagram to mermaid</span><br><span class="line">excludes weekdays 2014-01-10</span><br><span class="line"></span><br><span class="line">section A section</span><br><span class="line">Completed task            :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">Active task               :active,  des2, 2014-01-09, 3d</span><br><span class="line">Future task               :         des3, after des2, 5d</span><br><span class="line">Future task2               :         des4, after des2, 5d</span><br></pre></td></tr></table></figure>
@@ -155,25 +155,34 @@ Future task2               :         des4, after des2, 5d</pre>
         Bob->>Alice: Thanks for asking
     end</pre>
 <pre class="mermaid">sequenceDiagram
-    hue-hr-recruiting->>lambda(dev): webhook
-    lambda(dev) -->>lambda(dev): Sync source code to s3 bucket.
-    lambda(dev) ->>+codebuild: Trigger a build
-    codebuild -->>-lambda(dev): success
-    lambda(dev) ->> hpm-version: Update commit sha of `hue-hr-recruiting` in version.yml</pre>
-
+    participant A as hue-hr-recruiting
+    participant B as AWS Lambda(dev)
+    participant C as AWS Codebuild
+    participant D as hpm-version
+    A->>B: webhook
+    B-->>B: Sync source code to s3 bucket.
+    B->>+C: Trigger a build
+    C-->>-B: success
+    B->>D: Update commit sha of `hue-hr-recruiting` in version.yml</pre>
 <pre class="mermaid">sequenceDiagram
-    hpm-version ->>lambda: webhook: push a new release tag
+    participant A as hpm-version
+    participant B as AWS Lambda(prod)
+    participant C as AWS Pipeline
+    participant D as AWS Codebuild
+    participant E as Slack
+
+    A->>B: webhook: push a new release tag
     loop Every projects in version.yml
-        lambda->>+lambda: sync source code to s3 bucket in prod env for current tag.
+        B->>+B: sync source code to s3 bucket in prod env for current tag.
     end   
-    lambda ->> +code pipeline: Trigger a build
-    code pipeline ->> +slack: request approval
-    slack -->> -code pipeline: approval
+    B->>+C: Trigger a build
+    C->>+E: request approval
+    E-->>-C: approval
     loop Every projects in version.yml
-        code pipeline ->> +codebuild: build (buildspec.yml)
-        codebuild -->> -code pipeline: success
+        C->>+D: build (buildspec.yml)
+        D-->>-C: success
     end
-    code pipeline -->> -lambda: success</pre>
+    C-->>-B: success</pre>
 
 
 
@@ -278,9 +287,9 @@ alert("hello")
     
     <span class="next fr">
         下一篇<br >
-        <a href="../springboot-logback/">
+        <a href="../../24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/">
             
-                Springboot中使用logback输出日志中文乱码
+                将springboot项目部署成ubuntu service
             
         </a>
     </span>
@@ -499,7 +508,7 @@ alert("hello")
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="../../../../js/main.js?v=1608888486456.js"></script>
+<script src="../../../../js/main.js?v=1608889587457.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
