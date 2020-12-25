@@ -65,28 +65,37 @@ sequenceDiagram
 ```
 ```mermaid
 sequenceDiagram
-    hue-hr-recruiting->>lambda(dev): webhook
-    lambda(dev) -->>lambda(dev): Sync source code to s3 bucket.
-    lambda(dev) ->>+codebuild: Trigger a build
-    codebuild -->>-lambda(dev): success
-    lambda(dev) ->> hpm-version: Update commit sha of `hue-hr-recruiting` in version.yml
+    participant A as hue-hr-recruiting
+    participant B as AWS Lambda(dev)
+    participant C as AWS Codebuild
+    participant D as hpm-version
+    A->>B: webhook
+    B-->>B: Sync source code to s3 bucket.
+    B->>+C: Trigger a build
+    C-->>-B: success
+    B->>D: Update commit sha of `hue-hr-recruiting` in version.yml
    
 ```
-
 ```mermaid
 sequenceDiagram
-    hpm-version ->>lambda: webhook: push a new release tag
+    participant A as hpm-version
+    participant B as AWS Lambda(prod)
+    participant C as AWS Pipeline
+    participant D as AWS Codebuild
+    participant E as Slack
+
+    A->>B: webhook: push a new release tag
     loop Every projects in version.yml
-        lambda->>+lambda: sync source code to s3 bucket in prod env for current tag.
+        B->>+B: sync source code to s3 bucket in prod env for current tag.
     end   
-    lambda ->> +code pipeline: Trigger a build
-    code pipeline ->> +slack: request approval
-    slack -->> -code pipeline: approval
+    B->>+C: Trigger a build
+    C->>+E: request approval
+    E-->>-C: approval
     loop Every projects in version.yml
-        code pipeline ->> +codebuild: build (buildspec.yml)
-        codebuild -->> -code pipeline: success
+        C->>+D: build (buildspec.yml)
+        D-->>-C: success
     end
-    code pipeline -->> -lambda: success
+    C-->>-B: success
 ```
 
 
