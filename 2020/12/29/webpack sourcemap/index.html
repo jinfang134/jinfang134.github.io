@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <title>mermaid图表 | On the road</title>
+    <title>Webpack SourceMap 配置 | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -123,134 +123,36 @@ var _hmt = _hmt || [];
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>mermaid图表</span></h3>
+        <h3 class="post-title"><span>Webpack SourceMap 配置</span></h3>
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-25T10:50:36.956Z">2020-12-25</time>
+        <time datetime="2020-12-29T08:16:18.857Z">2020-12-29</time>
     </p>
     <div class="post-content">
-        <h2 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">dateFormat  YYYY-MM-DD</span><br><span class="line">title Adding GANTT diagram to mermaid</span><br><span class="line">excludes weekdays 2014-01-10</span><br><span class="line"></span><br><span class="line">section A section</span><br><span class="line">Completed task            :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">Active task               :active,  des2, 2014-01-09, 3d</span><br><span class="line">Future task               :         des3, after des2, 5d</span><br><span class="line">Future task2               :         des4, after des2, 5d</span><br></pre></td></tr></table></figure>
-<pre class="mermaid">gantt
-dateFormat  YYYY-MM-DD
-title Adding GANTT diagram to mermaid
-excludes weekdays 2014-01-10
-
-section A section
-Completed task            :done,    des1, 2014-01-06,2014-01-08
-Active task               :active,  des2, 2014-01-09, 3d
-Future task               :         des3, after des2, 5d
-Future task2               :         des4, after des2, 5d</pre>
-<a id="more"></a>
-<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    Alice-&gt;&gt;Bob: Hello Bob, how are you?</span><br><span class="line">    alt is sick</span><br><span class="line">        Bob-&gt;&gt;Alice: Not so good :(</span><br><span class="line">    else is well</span><br><span class="line">        Bob-&gt;&gt;Alice: Feeling fresh like a daisy</span><br><span class="line">    end</span><br><span class="line">    opt Extra response</span><br><span class="line">        Bob-&gt;&gt;Alice: Thanks for asking</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
-
-<pre class="mermaid">sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you?
-    alt is sick
-        Bob->>Alice: Not so good :(
-    else is well
-        Bob->>Alice: Feeling fresh like a daisy
-    end
-    opt Extra response
-        Bob->>Alice: Thanks for asking
-    end</pre>
-<pre class="mermaid">sequenceDiagram
-    participant A as hue-hr-recruiting
-    participant B as AWS Lambda(dev)
-    participant C as AWS Codebuild
-    participant D as hpm-version
-    A->>B: webhook
-    B-->>B: Sync source code to s3 bucket.
-    B->>+C: Trigger a build
-    C-->>-B: success
-    B->>D: Update commit sha of `hue-hr-recruiting` in version.yml</pre>
-<pre class="mermaid">sequenceDiagram
-    participant A as hpm-version
-    participant B as AWS Lambda(prod)
-    participant C as AWS Pipeline
-    participant D as AWS Codebuild
-    participant E as Slack
-
-    A->>B: webhook: push a new release tag
-    loop Every projects in version.yml
-        B->>+B: sync source code to s3 bucket in prod env for current tag.
-    end   
-    B->>+C: Trigger a build
-    C->>+E: request approval
-    E-->>-C: approval
-    loop Every projects in version.yml
-        C->>+D: build (buildspec.yml)
-        D-->>-C: success
-    end
-    C-->>-B: success</pre>
-
-
-
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><h3 id="利用mermaid来画思维导图"><a href="#利用mermaid来画思维导图" class="headerlink" title="利用mermaid来画思维导图"></a>利用mermaid来画思维导图</h3><pre class="mermaid">    graph TD
-    A(工业用地效率)-->B1(土地利用强度)
-    A-->B2(土地经济效益)
-    B1-->C1(容积率)
-    B1-->C2(建筑系数)
-    B1-->C3(亩均固定资本投入)
-    B2-->D1(亩均工业产值)
-    B2-->D2(亩均税收)</pre>
-
-<pre class="mermaid">graph LR
-KaTex--> A(标记 Accents)
-A-->B(撇,估计,均值,向量等写于符号上下的标记)
-KaTex--> 分隔符_Delimiters
-分隔符_Delimiters-->小中大括号,竖杠,绝对值等分隔符的反斜杠写法
-KaTex--> 公式组_Enviroments
-公式组_Enviroments-->C(.....)
-B --> E(sdfdfdsf)
-B --> E2(test)
-B --> E3(test sdfsdf)
-B --> E4(test dfewrwer)
-E4 --> F("test content")</pre>
-
-<blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html">Hexo 的思维导图插件</a><ul>
-<li>前言</li>
-<li>使用方法<ul>
-<li>一</li>
-<li>二</li>
-<li>三</li>
-</ul>
-</li>
-<li>太长不看</li>
-<li>参考资料</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e^&#123;i\pi&#125; + 1 &#x3D; 0</span><br></pre></td></tr></table></figure>
-<!-- $$
-f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi \xi x} \,d\xi
-$$ -->
-
-<p>:joy:</p>
-<hr>
-<!-- <script>
-alert("hello")
-</script> -->
-
-
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid/#/sequenceDiagram">mermaid-js</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-math">hexo-math</a></li>
+        <p>最近项目中遇到了sourcemap不生效的问题,而且是有的项目生效,有的项目不生效, 经过一番查找资料,最终将问题解决,因此写篇文章以作备忘,也给后来者一个参考</p>
+<h2 id="关于webpack-sourcemap"><a href="#关于webpack-sourcemap" class="headerlink" title="关于webpack sourcemap"></a>关于webpack sourcemap</h2><p>其实<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/devtool/">官方文档</a>已经写得比较详细了, 需要注意的点是：</p>
+<ol>
+<li>当<code>mode: production</code>时不能用 <code>Development</code> 模式的sourcemap, 否则文件名都不会显示出来, 我测试时在production模式下使用<code>eval-source-map</code>时就出现了这种情况。</li>
+<li><code>mode: production</code> 时推荐使用 <code>devtool: &#39;source-map&#39;</code>。</li>
+<li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。<a id="more"></a>
+<h2 id="Typescript项目"><a href="#Typescript项目" class="headerlink" title="Typescript项目"></a>Typescript项目</h2>对于typescript项目, 如果你用的<code>ts-loader</code>, 请务必注意两个地方:</li>
+<li>tsconfig.json当中配置<code>sourceMap: true</code>, 以下为一个示例配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;forceConsistentCasingInFileNames&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;~common/*&quot;</span>: [<span class="string">&quot;src/common/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~model/*&quot;</span>: [<span class="string">&quot;src/model/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~orm/*&quot;</span>: [<span class="string">&quot;src/orm/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~load/*&quot;</span>: [<span class="string">&quot;src/load/*&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;es5&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">      <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es2015&quot;</span>,</span><br><span class="line">      <span class="string">&quot;esnext.asynciterable&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;node&quot;</span>],</span><br><span class="line">    <span class="string">&quot;typeRoots&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;node_modules/@types&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src/server/handler.ts&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>正确配置<code>ts-loader</code><br>我们的ts项目sourcemap无法显示行号和源代码路径,就是挂在这里,对此,<code>ts-loader</code>官方github里有一个<a target="_blank" rel="noopener" href="https://github.com/TypeStrong/ts-loader/tree/master/examples/fork-ts-checker-webpack-plugin">example</a>, ts-loader一定要记得配置<code>transpileOnly: true</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">          &#123;</span><br><span class="line">              test: <span class="regexp">/.tsx?$/</span>,</span><br><span class="line">              use: [</span><br><span class="line">                  &#123; <span class="attr">loader</span>: <span class="string">&#x27;ts-loader&#x27;</span>, <span class="attr">options</span>: &#123; <span class="attr">transpileOnly</span>: <span class="literal">true</span> &#125; &#125;  </span><br><span class="line">              ],</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
 </ol>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="../../../../categories/markdown/">markdown</a>
+            <a class="cat-link" href="../../../../categories/coding/">coding</a>
         </span>
         <span class="post-tags">
             标签：
             
     
-        <a href="../../../../tags/markdown/" title="markdown">markdown</a>
+        <a href="../../../../tags/sourcemap/" title="sourcemap">sourcemap</a> / 
+    
+        <a href="../../../../tags/webpack/" title="webpack">webpack</a>
     
 
         </span>
@@ -276,9 +178,9 @@ alert("hello")
     
     <span class="prev fl">
         上一篇<br >
-        <a href="../javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+        <a href="../springboot-logback/">
             
-                javascript数组常用方法总结
+                Springboot中使用logback输出日志中文乱码
             
         </a>
     </span>
@@ -287,9 +189,9 @@ alert("hello")
     
     <span class="next fr">
         下一篇<br >
-        <a href="../springboot-logback/">
+        <a href="../../24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/">
             
-                Springboot中使用logback输出日志中文乱码
+                将springboot项目部署成ubuntu service
             
         </a>
     </span>
@@ -368,11 +270,11 @@ alert("hello")
   <script>
   JELON.Comment({
     container: 'comments',
-    label: 'mermaid图表' || '2020/12/25/mermaid图表/',
+    label: 'webpack sourcemap' || '2020/12/29/webpack sourcemap/',
     owner: 'jinfang134',
-    repo: 'blog_comments',
-    clientId: 'b08ed25e52c57993e69c',
-    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
+    repo: 'blog-comment',
+    clientId: 'fbd15b4439e45611319e',
+    clientSecret: 'ea34d1532a04245c1c3845aabe40a9e0467312d7'
   });
   </script>
 
@@ -484,7 +386,7 @@ alert("hello")
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="../../../../js/main.js?v=1608893451848.js"></script>
+<script src="../../../../js/main.js?v=1609229793186.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
