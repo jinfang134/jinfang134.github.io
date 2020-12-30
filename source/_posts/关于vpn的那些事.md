@@ -4,8 +4,9 @@ date: 2020-12-30 19:11:15
 author: zuo_ji
 categories:
   - Web技术
-  - 生活琐事
 tags:
+  - vpn
+  - shadowsocks
 thumbnail:
 blogexcerpt:
 ---

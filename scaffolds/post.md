@@ -1,5 +1,6 @@
 ---
 title: {{ title }}
+date: {{new Date()}}
 author: zuo_ji
 tags:
 categories:
