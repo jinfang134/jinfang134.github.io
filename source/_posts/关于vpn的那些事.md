@@ -14,6 +14,7 @@ blogexcerpt:
 
 ## 服务端
 服务端我用的是的[shadowsocks-libv](https://github.com/shadowsocks/shadowsocks-libev),为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的[docker镜像](https://hub.docker.com/r/shadowsocks/shadowsocks-libev)，使用还挺方便的。
+<!-- more -->
 - docker直接运行
   ```shell
   docker run -e PASSWORD=<password> -p<server-port>:8388 -p<server-port>:8388/udp -d shadowsocks/shadowsocks-libev
