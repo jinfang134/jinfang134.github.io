@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <title>Webpack SourceMap 配置 | On the road</title>
+    <title>常用工具换源 | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -60,19 +60,19 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/2020/12/30/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/2020/12/30/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
                 <a href="/categories/coding/" title="编程" class="icon-lab">&nbsp;编程</a>
             </li>
             
-            <li rel="/2020/12/30/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/2020/12/30/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -123,23 +123,35 @@ var _hmt = _hmt || [];
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>Webpack SourceMap 配置</span></h3>
+        <h3 class="post-title"><span>常用工具换源</span></h3>
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-30T15:36:36.293Z">2020-12-30</time>
+        <time datetime="2020-12-13T17:11:15.000Z">2020-12-13</time>
     </p>
     <div class="post-content">
-        <p>最近项目中遇到了sourcemap不生效的问题,而且是有的项目生效,有的项目不生效, 经过一番查找资料,最终将问题解决,因此写篇文章以作备忘,也给后来者一个参考</p>
-<h2 id="关于webpack-sourcemap"><a href="#关于webpack-sourcemap" class="headerlink" title="关于webpack sourcemap"></a>关于webpack sourcemap</h2><p>其实<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/devtool/">官方文档</a>已经写得比较详细了, 需要注意的点是：</p>
-<ol>
-<li>当<code>mode: production</code>时不能用 <code>Development</code> 模式的sourcemap, 否则文件名都不会显示出来, 我测试时在production模式下使用<code>eval-source-map</code>时就出现了这种情况。</li>
-<li><code>mode: production</code> 时推荐使用 <code>devtool: &#39;source-map&#39;</code>。</li>
-<li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。<a id="more"></a>
-<h2 id="Typescript项目"><a href="#Typescript项目" class="headerlink" title="Typescript项目"></a>Typescript项目</h2>对于typescript项目, 如果你用的<code>ts-loader</code>, 请务必注意两个地方:</li>
-<li>tsconfig.json当中配置<code>sourceMap: true</code>, 以下为一个示例配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;forceConsistentCasingInFileNames&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;~common/*&quot;</span>: [<span class="string">&quot;src/common/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~model/*&quot;</span>: [<span class="string">&quot;src/model/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~orm/*&quot;</span>: [<span class="string">&quot;src/orm/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~load/*&quot;</span>: [<span class="string">&quot;src/load/*&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;es5&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">      <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es2015&quot;</span>,</span><br><span class="line">      <span class="string">&quot;esnext.asynciterable&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;node&quot;</span>],</span><br><span class="line">    <span class="string">&quot;typeRoots&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;node_modules/@types&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src/server/handler.ts&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>正确配置<code>ts-loader</code><br>我们的ts项目sourcemap无法显示行号和源代码路径,就是挂在这里,对此,<code>ts-loader</code>官方github里有一个<a target="_blank" rel="noopener" href="https://github.com/TypeStrong/ts-loader/tree/master/examples/fork-ts-checker-webpack-plugin">example</a>, ts-loader一定要记得配置<code>transpileOnly: true</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">          &#123;</span><br><span class="line">              test: <span class="regexp">/.tsx?$/</span>,</span><br><span class="line">              use: [</span><br><span class="line">                  &#123; <span class="attr">loader</span>: <span class="string">&#x27;ts-loader&#x27;</span>, <span class="attr">options</span>: &#123; <span class="attr">transpileOnly</span>: <span class="literal">true</span> &#125; &#125;  </span><br><span class="line">              ],</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
+        <p>由于长城的存在，一些开发工具在国内就不是那么好使，默认的源都在国外，网速很慢，所以需要进行换源．</p>
+<a id="more"></a>
+<h2 id="Maven换源"><a href="#Maven换源" class="headerlink" title="Maven换源"></a>Maven换源</h2><p>maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。<br>修改maven根目录下的conf文件夹中的setting.xml文件，内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>之后就能享受如飞的maven下载速度。</p>
+<h2 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h2><h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>全称Node Package Manager，是node.js的模块依赖管理工具。由于npm的源在国外，所以国内用户使用起来各种不方便。下面整理出了一部分国内优秀的npm镜像资源，国内用户可以选择使用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h3 id="国内优秀npm镜像"><a href="#国内优秀npm镜像" class="headerlink" title="国内优秀npm镜像"></a>国内优秀npm镜像</h3><ul>
+<li> 淘宝npm镜像<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">搜索地址：http:&#x2F;&#x2F;npm.taobao.org&#x2F;</span><br><span class="line">registry地址：http:&#x2F;&#x2F;registry.npm.taobao.org&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li> cnpmjs镜像<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">搜索地址：http:&#x2F;&#x2F;cnpmjs.org&#x2F;</span><br><span class="line">registry地址：http:&#x2F;&#x2F;r.cnpmjs.org&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li>如何使用<br>有很多方法来配置npm<br>的registry地址，下面根据不同情境列出几种比较常用的方法。以淘宝npm镜像举例：<ol>
+<li>临时使用<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --registry https://registry.npm.taobao.org install express</span><br></pre></td></tr></table></figure></li>
+<li>持久使用<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或npm info express</span><br></pre></td></tr></table></figure></li>
+<li>通过cnpm使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">&#x2F;&#x2F; 使用cnpm install expresstall express</span><br></pre></td></tr></table></figure>
+来源：<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/0deb70e6f395">http://www.jianshu.com/p/0deb70e6f395</a></li>
 </ol>
+</li>
+</ul>
+<h2 id="ubuntu改源"><a href="#ubuntu改源" class="headerlink" title="ubuntu改源"></a>ubuntu改源</h2><p><a target="_blank" rel="noopener" href="http://mirrors.163.com/.help/ubuntu.html">网易源</a></p>
+<h2 id="Ruby-改源"><a href="#Ruby-改源" class="headerlink" title="Ruby 改源"></a>Ruby 改源</h2><p>RubyGems 一直以来在国内都非常难访问到，在本地你或许可以翻墙，当你要发布上线的时候，你就很难搞了！更多细节访问 <a target="_blank" rel="noopener" href="http://gems.ruby-china.org/">ruby-china</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gem sources --add https:&#x2F;&#x2F;gems.ruby-china.org&#x2F; --remove https:&#x2F;&#x2F;rubygems.org&#x2F;</span><br><span class="line">$ gem sources -l</span><br><span class="line">https:&#x2F;&#x2F;gems.ruby-china.org</span><br><span class="line"># 确保只有 gems.ruby-china.org</span><br><span class="line"># 更新缓存</span><br><span class="line">gem sources -u </span><br></pre></td></tr></table></figure>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
     </div>
     <p class="post-meta">
@@ -150,9 +162,7 @@ var _hmt = _hmt || [];
             标签：
             
     
-        <a href="/tags/sourcemap/" title="sourcemap">sourcemap</a> / 
-    
-        <a href="/tags/webpack/" title="webpack">webpack</a>
+        <a href="/tags/npm/" title="npm">npm</a>
     
 
         </span>
@@ -178,9 +188,9 @@ var _hmt = _hmt || [];
     
     <span class="prev fl">
         上一篇<br >
-        <a href="/2020/12/30/springboot-logback/">
+        <a href="/2020/12/20/webpack%20sourcemap/">
             
-                Springboot中使用logback输出日志中文乱码
+                Webpack SourceMap 配置
             
         </a>
     </span>
@@ -189,9 +199,9 @@ var _hmt = _hmt || [];
     
     <span class="next fr">
         下一篇<br >
-        <a href="/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/">
+        <a href="/2020/12/10/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
             
-                将springboot项目部署成ubuntu service
+                ElementUI之el-upload实现base64上传
             
         </a>
     </span>
@@ -270,7 +280,7 @@ var _hmt = _hmt || [];
   <script>
   JELON.Comment({
     container: 'comments',
-    label: 'webpack sourcemap' || '2020/12/30/webpack sourcemap/',
+    label: '常用工具换源' || '2020/12/13/常用工具换源/',
     owner: 'jinfang134',
     repo: 'blog-comment',
     clientId: 'fbd15b4439e45611319e',
@@ -312,11 +322,6 @@ var _hmt = _hmt || [];
     </li>
     
     <li>
-        <a href="/categories/Web%E6%8A%80%E6%9C%AF/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/">生活琐事</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
         <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
         <span class="badge">(1)</span>
     </li>
@@ -348,6 +353,10 @@ var _hmt = _hmt || [];
     <a class="tag-item" href="/tags/sourcemap/" title="sourcemap">sourcemap (2)</a>
   
     <a class="tag-item" href="/tags/webpack/" title="webpack">webpack (2)</a>
+  
+    <a class="tag-item" href="/tags/vpn/" title="vpn">vpn (1)</a>
+  
+    <a class="tag-item" href="/tags/shadowsocks/" title="shadowsocks">shadowsocks (1)</a>
   
     <a class="tag-item" href="/tags/ubuntu/" title="ubuntu">ubuntu (2)</a>
   
@@ -391,7 +400,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609342610531.js"></script>
+<script src="/js/main.js?v=1609343515311.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
