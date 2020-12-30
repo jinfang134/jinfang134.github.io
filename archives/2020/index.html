@@ -135,12 +135,100 @@ var _hmt = _hmt || [];
     <header>
         <!-- 标签这有且只能显示一个 -->
         
+        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+    		关于vpn的那些事
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        zuo_ji 发表于
+        <time datetime="2020-12-30T19:11:15.000Z">2020-12-30</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>在外企上班，公司网络是直接vpn到新加坡的，也经常要用slack等工具进行线上交流，没个梯子还经常挺不方便的。最近抽空折腾了一下，写个文章记录一下过程。</p>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端我用的是的<a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-libev">shadowsocks-libv</a>,为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的<a target="_blank" rel="noopener" href="https://hub.docker.com/r/shadowsocks/shadowsocks-libev">docker镜像</a>，使用还挺方便的。</p>
+<ul>
+<li>docker直接运行<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e PASSWORD=&lt;password&gt; -p&lt;server-port&gt;:8388 -p&lt;server-port&gt;:8388/udp -d shadowsocks/shadowsocks-libev</span><br></pre></td></tr></table></figure></li>
+<li>docker-compose方式，我更推荐这种方式，更加便于维护和管理，写一个<code>docker-compose.yml</code>,内容如下：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;2&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">shadowsocks1:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">shadowsocks/shadowsocks-libev</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">shadowsocks1</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">PASSWORD:</span> <span class="string">password</span></span><br><span class="line">      <span class="comment"># METHOD: CHACHA20-IETF-POLY1305</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8388:8388&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8388:8388/udp&quot;</span></span><br><span class="line">    <span class="comment"># volumes: </span></span><br><span class="line">      <span class="comment"># - $PWD/config:/etc/shadowsocks</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+然后运行<code>docker-compose up -d</code>来启动shadowsocks服务，如果不配置method,默认是使用<code>aes-256-gcm</code>方法</li>
+</ul>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>Shadowsocks 目前的客户端基本各个平台上面的都有。本文主要介绍在 Windows、macOS、Linux、Android、iOS、OpenWRT 平台上常用的一些客户端。</p>
+<p>需要说明的一点是，如果使用<code>Outline</code>客户端，需要一个访问密钥，那这个访问密钥是怎么生成呢？</p>
+<p>规则如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;ss://&#x27;</span>+ base64(<span class="string">`<span class="subst">$&#123;method&#125;</span>:<span class="subst">$&#123;password&#125;</span>@<span class="subst">$&#123;host&#125;</span>:<span class="subst">$&#123;port&#125;</span>`</span>)+<span class="string">&#x27;#&#x27;</span>+name</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">method</span>: <span class="string">rc4-md5</span></span><br><span class="line"><span class="attr">password</span>: <span class="string">test123</span></span><br><span class="line"><span class="attr">host</span>: <span class="string">283.234.123.21</span></span><br><span class="line"><span class="attr">port</span>: <span class="string">4000</span></span><br></pre></td></tr></table></figure>
+<p>拼接字符串得到：<code>rc4-md5:test123@283.234.123.21:4000</code><br>进行<code>base64</code>编码以后，得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmM0LW1kNTp0ZXN0MTIzQDI4My4yMzQuMTIzLjIxOjQwMDA&#x3D;</span><br></pre></td></tr></table></figure>
+<p>最后访问密钥如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss:&#x2F;&#x2F;cmM0LW1kNTp0ZXN0MTIzQDI4My4yMzQuMTIzLjIxOjQwMDA&#x3D;#shadowsock</span><br></pre></td></tr></table></figure>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p><strong>Shadowsocks Windows</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-windows/releases">GitHub</a></p>
+<p>在 Windows 平台推荐使用，由官方出品，需要安装 <a target="_blank" rel="noopener" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">.NET Framework</a>，请尽量使用最新版本。使用教程请参考：<a target="_blank" rel="noopener" href="https://www.vpnto.net/posts/windows-shadowsocks/">在 Windows 中配置 Shadowsocks 客户端</a></p>
+<p><strong>Outline Windows</strong>: <a target="_blank" rel="noopener" href="https://github.com/Jigsaw-Code/outline-client/">GitHub</a>/<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/Outline-Client.exe">Direct Download</a></p>
+<p><a target="_blank" rel="noopener" href="https://getoutline.org/">Outline</a> 由 <a target="_blank" rel="noopener" href="https://jigsaw.google.com/">Google Jigsaw</a> 出品，功能上比较简单，必须使用秘钥进行连接。</p>
+<h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p><strong>ShadowsocksX-NG</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/ShadowsocksX-NG/releases">GitHub</a></p>
+<p>新一代的 ShadowsocksX，底层是基于 Shadowsocks-libev 的 ss-local 客户端。使用教程请参考：<a target="_blank" rel="noopener" href="https://vpnto.net/posts/macos-shadowsocks/">在 macOS 中配置 Shadowsocks 客户端</a></p>
+<p><strong>Outline macOS</strong>: <a target="_blank" rel="noopener" href="https://github.com/Jigsaw-Code/outline-client/">GitHub</a>/<a target="_blank" rel="noopener" href="https://itunes.apple.com/app/outline-app/id1356178125">App Store</a></p>
+<p><a target="_blank" rel="noopener" href="https://getoutline.org/">Outline</a> 由 <a target="_blank" rel="noopener" href="https://jigsaw.google.com/">Google Jigsaw</a> 出品，功能上比较简单，必须使用秘钥进行连接。</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p><strong>Shadowsocks Qt5</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation">GitHub</a></p>
+<p>Shadowsocks 在 Linux 上唯一的 GUI，请按照 <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation">Wiki 安装指南</a>进行安装, 如果你喜欢命令行的请使用 Shadowsocks-libev 客户端。使用教程请参考：<a target="_blank" rel="noopener" href="https://vpnto.net/posts/linux-shadowsocks/">在 Linux 中配置 Shadowsocks 客户端</a></p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>如果无法访问 Google play 请下载 apk 安装。</p>
+<p><strong>Shadowsocks Android</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-android/releases">GitHub</a>/<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.github.shadowsocks">Google Play</a> (<a target="_blank" rel="noopener" href="https://play.google.com/apps/testing/com.github.shadowsocks">beta</a>)</p>
+<p>Shadowsocks 官方开发的 Android 版本，功能强大，推荐使用。使用教程请参考：<a target="_blank" rel="noopener" href="https://vpnto.net/posts/android-shadowsocks/">在 Android 中使用 Shadowsocks 客户端</a></p>
+<p><strong>Outline Android</strong>: <a target="_blank" rel="noopener" href="https://github.com/Jigsaw-Code/outline-client/">GitHub</a>/<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=org.outline.android.client">Play Store</a>/<a target="_blank" rel="noopener" href="https://github.com/Jigsaw-Code/outline-releases/blob/master/client/Outline.apk?raw=true">Direct Download</a></p>
+<p><a target="_blank" rel="noopener" href="https://getoutline.org/">Outline</a> 由 <a target="_blank" rel="noopener" href="https://jigsaw.google.com/">Google Jigsaw</a> 出品，功能上比较简单，必须使用秘钥进行连接。</p>
+<h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><p>目前在 App Store 上面无法在中国区搜索到，请使用非中国大陆区的账号搜索并购买。</p>
+<p><strong>Outline iOS</strong>: <a target="_blank" rel="noopener" href="https://github.com/Jigsaw-Code/outline-client/">GitHub</a>/<a target="_blank" rel="noopener" href="https://itunes.apple.com/app/outline-app/id1356177741">App Store</a></p>
+<p><a target="_blank" rel="noopener" href="https://getoutline.org/">Outline</a> 由 <a target="_blank" rel="noopener" href="https://jigsaw.google.com/">Google Jigsaw</a> 出品，功能上比较简单，必须使用秘钥进行连接。可以免费下载。</p>
+<p><strong>Potatso Lite</strong>: <a target="_blank" rel="noopener" href="https://itunes.apple.com/app/potatso-lite/id1239860606">App Store</a></p>
+<p><a target="_blank" rel="noopener" href="https://potatso.com/">Potatso</a> 的简版，不过功能够用，可以免费下载。</p>
+<p><strong>Shadowrocket</strong>: <a target="_blank" rel="noopener" href="https://itunes.apple.com/app/shadowrocket/id932747118">App Store</a></p>
+<p>Shadowrocket 应该属于目前最火的 Shadowsocks iOS 客户端了，功能强大，更新快。性价比非常高，推荐购买使用，目前美区是 $2.99 的价格。使用教程请参考：<a target="_blank" rel="noopener" href="https://vpnto.net/posts/ios-shadowsocks/">在 iOS 中使用 Shadowsocks 客户端</a></p>
+<h3 id="OpenWrt-LEDE"><a href="#OpenWrt-LEDE" class="headerlink" title="OpenWrt/LEDE"></a>OpenWrt/LEDE</h3><p><strong>Shadowsocks-libev for OpenWrt</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/openwrt-shadowsocks/releases">GitHub</a></p>
+<p><strong>OpenWrt LuCI for Shadowsocks-libev</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/luci-app-shadowsocks/releases">GitHub</a></p>
+<p>在 OpenWrt/LEDE 的路由器中使用 Shadowsocks，配合 ChinaDNS 和 DNS-Forwarder 使用更好，在这里查看 <a target="_blank" rel="noopener" href="https://www.vpnto.net/posts/shadowsocks-openwrt/">OpenWrt/LEDE Shadowsocks</a> 安装教程。</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+            
+            <p class="more">
+                <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="关于vpn的那些事">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章列表 item -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
         <a class="cat-link" href="/categories/coding/">coding</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
+    	<a href="https://jinfang134.github.io/2020/12/30/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
     		ElementUI之el-upload实现base64上传
     	</a>
     </h3>
@@ -148,7 +236,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -166,13 +254,13 @@ var _hmt = _hmt || [];
                 <p>我们的系统后端使用了<code>aws</code> 的 <code>serverless</code>架构，由于<code>lambda</code>的限制，在上传文件时要先将文件转换为base64，才能进行上传，并且不能超过10M，。<br>经过一番选择，我们决定使用<code>el-upload</code>这个控件。<br><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/issues/3087">https://github.com/ElemeFE/element/issues/3087</a><br>但是，这个组件目前并没有对base64提供良好的支持。<br><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/2a1a6360ca763139b666aaca899703931a4a672b/packages/upload/src/upload.vue">https://github.com/ElemeFE/element/blob/2a1a6360ca763139b666aaca899703931a4a672b/packages/upload/src/upload.vue</a><br>这个是组件源码。</p>
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/" title="ElementUI之el-upload实现base64上传">
+            <a href="https://jinfang134.github.io/2020/12/30/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/" title="ElementUI之el-upload实现base64上传">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -190,7 +278,7 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">
+    	<a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">
     		Springboot打包瘦身
     	</a>
     </h3>
@@ -198,7 +286,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -219,13 +307,13 @@ var _hmt = _hmt || [];
 <p>有需求就会有解决的办法，其实早有插件做到这件事。<a target="_blank" rel="noopener" href="https://github.com/dsyer/spring-boot-thin-launcher">Spring Boot Thin Launcher</a>， 你值得拥有。</p>
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/" title="Springboot打包瘦身">
+            <a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/" title="Springboot打包瘦身">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -243,7 +331,7 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+    	<a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
     		javascript数组常用方法总结
     	</a>
     </h3>
@@ -251,7 +339,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -275,13 +363,13 @@ var _hmt = _hmt || [];
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]; </span><br><span class="line"><span class="keyword">var</span> b = a.pop(); <span class="comment">//a：[1,2,3,4]   b：5 //不用返回的话直接调用就可以了</span></span><br></pre></td></tr></table></figure>
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="javascript数组常用方法总结">
+            <a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="javascript数组常用方法总结">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -299,7 +387,7 @@ var _hmt = _hmt || [];
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/mermaid%E5%9B%BE%E8%A1%A8/">
+    	<a href="https://jinfang134.github.io/2020/12/30/mermaid%E5%9B%BE%E8%A1%A8/">
     		mermaid图表
     	</a>
     </h3>
@@ -307,7 +395,7 @@ var _hmt = _hmt || [];
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -335,13 +423,13 @@ Future task               :         des3, after des2, 5d
 Future task2               :         des4, after des2, 5d</pre>
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/mermaid%E5%9B%BE%E8%A1%A8/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/mermaid%E5%9B%BE%E8%A1%A8/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/mermaid%E5%9B%BE%E8%A1%A8/" title="mermaid图表">
+            <a href="https://jinfang134.github.io/2020/12/30/mermaid%E5%9B%BE%E8%A1%A8/" title="mermaid图表">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -359,7 +447,7 @@ Future task2               :         des4, after des2, 5d</pre>
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/springboot-logback/">
+    	<a href="https://jinfang134.github.io/2020/12/30/springboot-logback/">
     		Springboot中使用logback输出日志中文乱码
     	</a>
     </h3>
@@ -367,7 +455,7 @@ Future task2               :         des4, after des2, 5d</pre>
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -390,13 +478,13 @@ Future task2               :         des4, after des2, 5d</pre>
 </blockquote>
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/springboot-logback/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/springboot-logback/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/springboot-logback/" title="Springboot中使用logback输出日志中文乱码">
+            <a href="https://jinfang134.github.io/2020/12/30/springboot-logback/" title="Springboot中使用logback输出日志中文乱码">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -414,7 +502,7 @@ Future task2               :         des4, after des2, 5d</pre>
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/29/webpack%20sourcemap/">
+    	<a href="https://jinfang134.github.io/2020/12/30/webpack%20sourcemap/">
     		Webpack SourceMap 配置
     	</a>
     </h3>
@@ -422,7 +510,7 @@ Future task2               :         des4, after des2, 5d</pre>
     </header>
     <p class="post-meta">
         zuo_ji 发表于
-        <time datetime="2020-12-29T08:31:14.896Z">2020-12-29</time>
+        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -447,13 +535,13 @@ Future task2               :         des4, after des2, 5d</pre>
 <li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。
             
             <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/29/webpack%20sourcemap/">阅读剩下更多</a>
+                <a href="https://jinfang134.github.io/2020/12/30/webpack%20sourcemap/">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/29/webpack%20sourcemap/" title="Webpack SourceMap 配置">
+            <a href="https://jinfang134.github.io/2020/12/30/webpack%20sourcemap/" title="Webpack SourceMap 配置">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -641,7 +729,7 @@ Future task2               :         des4, after des2, 5d</pre>
     
     <li>
         <a href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        <span class="badge">(2)</span>
+        <span class="badge">(3)</span>
     </li>
     
     <li>
@@ -652,6 +740,11 @@ Future task2               :         des4, after des2, 5d</pre>
     <li>
         <a href="/categories/Web%E6%8A%80%E6%9C%AF/coding/">coding</a>
         <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Web%E6%8A%80%E6%9C%AF/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/">生活琐事</a>
+        <span class="badge">(1)</span>
     </li>
     
     <li>
@@ -729,7 +822,7 @@ Future task2               :         des4, after des2, 5d</pre>
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609230689628.js"></script>
+<script src="/js/main.js?v=1609342236934.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     

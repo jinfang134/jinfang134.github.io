@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <title>`Web技术`分类下的文章 | On the road</title>
+    <title>关于vpn的那些事 | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -60,19 +60,19 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/categories/Web%E6%8A%80%E6%9C%AF/index.html" class="item ">
+            <li rel="/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/categories/Web%E6%8A%80%E6%9C%AF/index.html" class="item ">
+            <li rel="/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html" class="item ">
                 <a href="/categories/coding/" title="编程" class="icon-lab">&nbsp;编程</a>
             </li>
             
-            <li rel="/categories/Web%E6%8A%80%E6%9C%AF/index.html" class="item ">
+            <li rel="/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/categories/Web%E6%8A%80%E6%9C%AF/index.html" class="item ">
+            <li rel="/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -119,46 +119,18 @@ var _hmt = _hmt || [];
     <div class="container body clearfix">
         <section class="content">
             <div class="content-main widget">
-                <!-- 文章分类 -->
-
-    <h3 class="widget-hd">
-        <strong>
-            
-                `Web技术`分类下的文章
-            
-        </strong>
-    </h3>
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
-    		关于vpn的那些事
-    	</a>
-    </h3>
-
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>关于vpn的那些事</span></h3>
     </header>
-    <p class="post-meta">
+    <p class="post-meta text-center">
         zuo_ji 发表于
         <time datetime="2020-12-30T19:11:15.000Z">2020-12-30</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-        </span>
     </p>
-
     <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>在外企上班，公司网络是直接vpn到新加坡的，也经常要用slack等工具进行线上交流，没个梯子还经常挺不方便的。最近抽空折腾了一下，写个文章记录一下过程。</p>
+        <p>在外企上班，公司网络是直接vpn到新加坡的，也经常要用slack等工具进行线上交流，没个梯子还经常挺不方便的。最近抽空折腾了一下，写个文章记录一下过程。</p>
 <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端我用的是的<a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-libev">shadowsocks-libv</a>,为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的<a target="_blank" rel="noopener" href="https://hub.docker.com/r/shadowsocks/shadowsocks-libev">docker镜像</a>，使用还挺方便的。</p>
 <ul>
 <li>docker直接运行<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e PASSWORD=&lt;password&gt; -p&lt;server-port&gt;:8388 -p&lt;server-port&gt;:8388/udp -d shadowsocks/shadowsocks-libev</span><br></pre></td></tr></table></figure></li>
@@ -201,137 +173,132 @@ var _hmt = _hmt || [];
 <p><strong>OpenWrt LuCI for Shadowsocks-libev</strong>: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/luci-app-shadowsocks/releases">GitHub</a></p>
 <p>在 OpenWrt/LEDE 的路由器中使用 Shadowsocks，配合 ChinaDNS 和 DNS-Forwarder 使用更好，在这里查看 <a target="_blank" rel="noopener" href="https://www.vpnto.net/posts/shadowsocks-openwrt/">OpenWrt/LEDE Shadowsocks</a> 安装教程。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="关于vpn的那些事">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
     </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">
-    		Springboot打包瘦身
-    	</a>
-    </h3>
-
-    </header>
     <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
-        &nbsp;&nbsp;
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>|<a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/">生活琐事</a>
+        </span>
         <span class="post-tags">
             标签：
             
-    
-        <a href="/tags/java/" title="java">java</a> / 
-    
-        <a href="/tags/springboot/" title="springboot">springboot</a>
-    
-
         </span>
     </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>Springboot</strong> 默认的打包方式会将所有的依赖都打到jar包里，导致打包以后的文件体积巨大，少则几十M，多则上百M，内网网络环境当中还不怎么影响，但是一旦部署到公网或者云服务器上时，如果网络环境不好，等待将是一个漫长的过程，极大地影响应用的快速部署和测试流程。</p>
-<p>有需求就会有解决的办法，其实早有插件做到这件事。<a target="_blank" rel="noopener" href="https://github.com/dsyer/spring-boot-thin-launcher">Spring Boot Thin Launcher</a>， 你值得拥有。</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/30/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/" title="Springboot打包瘦身">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
 </article>
+<!-- 分享按钮 -->
 
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
-    		javascript数组常用方法总结
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-30T15:30:22.861Z">2020-12-30</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a> / 
-    
-        <a href="/tags/js/" title="js">js</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="数组常用的api"><a href="#数组常用的api" class="headerlink" title="数组常用的api"></a>数组常用的api</h2><p>数组是javascript当中最常用的一种数据结构，熟练掌握其常用的api的用法是一项前端基本技能.</p>
-<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h3><blockquote>
-<p>删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined </p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]; </span><br><span class="line"><span class="keyword">var</span> b = a.pop(); <span class="comment">//a：[1,2,3,4]   b：5 //不用返回的话直接调用就可以了</span></span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/30/javascript%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="javascript数组常用方法总结">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
     </div>
-</article>
+  </div>
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="javascript: void(0);">没有上一篇了</a>
+    </span>
+    
 
     
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2020/12/30/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
+            
+                ElementUI之el-upload实现base64上传
+            
+        </a>
+    </span>
+    
+</div>
 
-    
-    <nav class="page-navigator">
-        <span class="page-number current">1</span>
-    </nav>
-    
+<!-- 文章评论 -->
+
+  
+<script src="/js/comment.js"></script>
+
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: '关于vpn的那些事' || '2020/12/30/关于vpn的那些事/',
+    owner: 'jinfang134',
+    repo: 'blog-comment',
+    clientId: 'fbd15b4439e45611319e',
+    clientSecret: 'ea34d1532a04245c1c3845aabe40a9e0467312d7'
+  });
+  </script>
 
 
             </div>
@@ -446,7 +413,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609342236936.js"></script>
+<script src="/js/main.js?v=1609342236925.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
