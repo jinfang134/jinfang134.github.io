@@ -15,7 +15,8 @@ blogexcerpt:
 
 ## 服务器
 服务器我用的是[virmach](https://billing.virmach.com/index.php?rp=/store/kvm-and-ssd-windows-vps),1.25刀一个月,价格还是挺实惠的，500GB的网络带宽应该是用不完的，至于网络速度，我测试了一下，youtube里的720p视频可以流畅播放。
-![](img/2020-12-31-00-28-50.png)
+
+![](/images/2020-12-31-00-28-50.png)
 
 ## 服务端
 服务端我用的是的[shadowsocks-libv](https://github.com/shadowsocks/shadowsocks-libev),为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的[docker镜像](https://hub.docker.com/r/shadowsocks/shadowsocks-libev)，使用还挺方便的。
