@@ -169,6 +169,8 @@ var _hmt = _hmt || [];
 <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器我用的是<a target="_blank" rel="noopener" href="https://billing.virmach.com/index.php?rp=/store/kvm-and-ssd-windows-vps">virmach</a>,1.25刀一个月,价格还是挺实惠的，500GB的网络带宽应该是用不完的，至于网络速度，我测试了一下，youtube里的720p视频可以流畅播放。</p>
 <p><img src="/images/2020-12-31-00-28-50.png"></p>
 <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端我用的是的<a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-libev">shadowsocks-libv</a>,为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的<a target="_blank" rel="noopener" href="https://hub.docker.com/r/shadowsocks/shadowsocks-libev">docker镜像</a>，使用还挺方便的。</p>
+<p>如果没有docker的话，得先安装docker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install common tools</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y vim git curl zsh htop python3-pip</span><br><span class="line"></span><br><span class="line"><span class="comment"># install docker</span></span><br><span class="line">curl -ssl https://get.docker.com/ | sh</span><br><span class="line">sudo groupadd docker</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># install docker-compose</span></span><br><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br></pre></td></tr></table></figure>
             
             <p class="more">
                 <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">阅读剩下更多</a>
@@ -321,7 +323,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609919949022.js"></script>
+<script src="/js/main.js?v=1609926580725.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
