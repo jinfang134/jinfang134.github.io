@@ -132,6 +132,8 @@ var _hmt = _hmt || [];
     </p>
     <div class="post-content">
         <h2 id="Jenkins-Blue-Ocean"><a href="#Jenkins-Blue-Ocean" class="headerlink" title="Jenkins Blue Ocean"></a>Jenkins Blue Ocean</h2><p>在<code>Jenkins</code>里有一款插件让我们耳目一新,这就是 <code>Jenkins blue ocean</code>, 可以很直观地显示当前build的进程和每个stage的详细日志.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-7b61d51d07d4d091.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>出现问题以后,能够快速判断问题出现在哪,快速查看相关的日志,而不受别的stage的日志的影响.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-b75f52423dcc0e67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<a id="more"></a>
+
 <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>这一良好的设计也被我司的设计人员心水, 并融入到我司的产品设计当中, 设计交到我们开发这边以后,经过前期的调研发现,目前并没有组件能够实现类型的功能.既然找不到,那就只能参考Jenkins的设计,自行开发一个. </p>
 <p>Jenkins pipeline是用svg实现的,前端是react, 整个代码不是特别优雅,代码冗长, 业务逻辑和界面渲染的逻辑混在一块, 特别是曲线描绘部分的代码,看得云里雾里, 所以干脆弃之不用,只采用了他的一些样式.</p>
 <h2 id="SVG简介"><a href="#SVG简介" class="headerlink" title="SVG简介"></a>SVG简介</h2><p>SVG 是一种基于 XML 语法的图像格式，全称是可缩放矢量图（Scalable Vector Graphics）。其他图像格式都是基于像素处理的，SVG 则是属于对图像的形状描述，所以它本质上是文本文件，体积较小，且不管放大多少倍都不会失真。<br>SVG 文件可以直接插入网页，成为 DOM 的一部分，然后用 JavaScript 和 CSS 进行操作。<br>SVG是基于xml的文本语言, 这就意味着他可以被搜索,索引和压缩,并且可以直接被任何的文本编辑器进行编辑处理.</p>
@@ -429,7 +431,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609919859033.js"></script>
+<script src="/js/main.js?v=1609919948996.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
