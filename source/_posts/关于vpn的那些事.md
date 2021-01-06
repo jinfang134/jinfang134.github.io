@@ -20,9 +20,27 @@ blogexcerpt:
 
 ## 服务端
 服务端我用的是的[shadowsocks-libv](https://github.com/shadowsocks/shadowsocks-libev),为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的[docker镜像](https://hub.docker.com/r/shadowsocks/shadowsocks-libev)，使用还挺方便的。
+
+如果没有docker的话，得先安装docker
+```sh
+# install common tools
+sudo apt-get update
+sudo apt-get install -y vim git curl zsh htop python3-pip
+
+# install docker
+curl -ssl https://get.docker.com/ | sh
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+# install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+```
+
 <!-- more -->
 - docker直接运行
-  ```shell
+  ```sh
   docker run -e PASSWORD=<password> -p<server-port>:8388 -p<server-port>:8388/udp -d shadowsocks/shadowsocks-libev
   ```
 - docker-compose方式，我更推荐这种方式，更加便于维护和管理，写一个`docker-compose.yml`,内容如下：
