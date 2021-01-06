@@ -6,7 +6,7 @@
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     <meta name="google-site-verification" content="5_E3xlNpcMTz2kVTRmAaFdU-CDFNMsouMefyglBzgqw" />
     
-    <title>文章归档 | On the road</title>
+    <title>仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件 | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -61,19 +61,19 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/archives/index.html" class="item ">
+            <li rel="/2020/12/13/vue-pipeline/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/archives/index.html" class="item ">
+            <li rel="/2020/12/13/vue-pipeline/index.html" class="item ">
                 <a href="/categories/coding/" title="编程" class="icon-lab">&nbsp;编程</a>
             </li>
             
-            <li rel="/archives/index.html" class="item ">
+            <li rel="/2020/12/13/vue-pipeline/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/archives/index.html" class="item ">
+            <li rel="/2020/12/13/vue-pipeline/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -120,433 +120,18 @@ var _hmt = _hmt || [];
     <div class="container body clearfix">
         <section class="content">
             <div class="content-main widget">
-                <!-- 文章归档 -->
-
-    <h3 class="widget-hd">
-        <strong>
-            
-                文章归档
-                <!-- 文章归档，可以根据日期分类 -->
-            
-        </strong>
-    </h3>
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
-    		关于vpn的那些事
-    	</a>
-    </h3>
-
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件</span></h3>
     </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-30T19:11:15.000Z">2020-12-30</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/vpn/" title="vpn">vpn</a> / 
-    
-        <a href="/tags/shadowsocks/" title="shadowsocks">shadowsocks</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>在外企上班，公司网络是直接vpn到新加坡的，也经常要用slack等工具进行线上交流，没个梯子还经常挺不方便的。最近抽空折腾了一下，写个文章记录一下过程。</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器我用的是<a target="_blank" rel="noopener" href="https://billing.virmach.com/index.php?rp=/store/kvm-and-ssd-windows-vps">virmach</a>,1.25刀一个月,价格还是挺实惠的，500GB的网络带宽应该是用不完的，至于网络速度，我测试了一下，youtube里的720p视频可以流畅播放。</p>
-<p><img src="/images/2020-12-31-00-28-50.png"></p>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端我用的是的<a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-libev">shadowsocks-libv</a>,为了与系统环境进行隔离，方便进行迁移，我用的是docker的方式来进行部署的，在官方hub里就有相应的<a target="_blank" rel="noopener" href="https://hub.docker.com/r/shadowsocks/shadowsocks-libev">docker镜像</a>，使用还挺方便的。</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/30/%E5%85%B3%E4%BA%8Evpn%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="关于vpn的那些事">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/markdown/">markdown</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/25/mermaid%E5%9B%BE%E8%A1%A8/">
-    		mermaid图表
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-25T19:11:15.000Z">2020-12-25</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/markdown/" title="markdown">markdown</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="甘特图"><a href="#甘特图" class="headerlink" title="甘特图"></a>甘特图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">dateFormat  YYYY-MM-DD</span><br><span class="line">title Adding GANTT diagram to mermaid</span><br><span class="line">excludes weekdays 2014-01-10</span><br><span class="line"></span><br><span class="line">section A section</span><br><span class="line">Completed task            :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">Active task               :active,  des2, 2014-01-09, 3d</span><br><span class="line">Future task               :         des3, after des2, 5d</span><br><span class="line">Future task2               :         des4, after des2, 5d</span><br></pre></td></tr></table></figure>
-<pre class="mermaid">gantt
-dateFormat  YYYY-MM-DD
-title Adding GANTT diagram to mermaid
-excludes weekdays 2014-01-10
-
-section A section
-Completed task            :done,    des1, 2014-01-06,2014-01-08
-Active task               :active,  des2, 2014-01-09, 3d
-Future task               :         des3, after des2, 5d
-Future task2               :         des4, after des2, 5d</pre>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/25/mermaid%E5%9B%BE%E8%A1%A8/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/25/mermaid%E5%9B%BE%E8%A1%A8/" title="mermaid图表">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/">
-    		将springboot项目部署成ubuntu service
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-24T16:58:02.000Z">2020-12-24</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/springboot/" title="springboot">springboot</a> / 
-    
-        <a href="/tags/ubuntu/" title="ubuntu">ubuntu</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>在部署springboot项目时，为了运行维护的方便，可将其部署为ubuntu service,并且可随系统启动而自动启动，本文将介绍一种比较简单的方式来实现此功能。</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/24/%E5%B0%86springboot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E6%88%90ubuntu%20service/" title="将springboot项目部署成ubuntu service">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
-    		常用软件安装
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-23T17:11:15.000Z">2020-12-23</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/ubuntu/" title="ubuntu">ubuntu</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="etc-apt-source-list"><a href="#etc-apt-source-list" class="headerlink" title="/etc/apt/source.list"></a>/etc/apt/source.list</h2><p>可以自动匹配速度比较快的源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]&#x2F; xenial main restricted</span><br><span class="line">deb mirror:&#x2F;&#x2F;mirrors.ubuntu.com&#x2F;mirrors.txt precise main restricted universe multiverse</span><br><span class="line">deb mirror:&#x2F;&#x2F;mirrors.ubuntu.com&#x2F;mirrors.txt precise-updates main restricted universe multiverse</span><br><span class="line">deb mirror:&#x2F;&#x2F;mirrors.ubuntu.com&#x2F;mirrors.txt precise-backports main restricted universe multiverse</span><br><span class="line">deb mirror:&#x2F;&#x2F;mirrors.ubuntu.com&#x2F;mirrors.txt precise-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" title="常用软件安装">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/20/webpack%20sourcemap/">
-    		Webpack SourceMap 配置
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-20T19:11:15.000Z">2020-12-20</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/sourcemap/" title="sourcemap">sourcemap</a> / 
-    
-        <a href="/tags/webpack/" title="webpack">webpack</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>最近项目中遇到了sourcemap不生效的问题,而且是有的项目生效,有的项目不生效, 经过一番查找资料,最终将问题解决,因此写篇文章以作备忘,也给后来者一个参考</p>
-<h2 id="关于webpack-sourcemap"><a href="#关于webpack-sourcemap" class="headerlink" title="关于webpack sourcemap"></a>关于webpack sourcemap</h2><p>其实<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/devtool/">官方文档</a>已经写得比较详细了, 需要注意的点是：</p>
-<ol>
-<li>当<code>mode: production</code>时不能用 <code>Development</code> 模式的sourcemap, 否则文件名都不会显示出来, 我测试时在production模式下使用<code>eval-source-map</code>时就出现了这种情况。</li>
-<li><code>mode: production</code> 时推荐使用 <code>devtool: &#39;source-map&#39;</code>。</li>
-<li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/20/webpack%20sourcemap/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/20/webpack%20sourcemap/" title="Webpack SourceMap 配置">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/20/springboot-logback/">
-    		Springboot中使用logback输出日志中文乱码
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-20T12:00:00.000Z">2020-12-20</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/sourcemap/" title="sourcemap">sourcemap</a> / 
-    
-        <a href="/tags/webpack/" title="webpack">webpack</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>在Springboot中使用logback输出日志时，中文变成了<code>？</code>乱码，第一反应是编码问题.<br>解决方法：</p>
-<blockquote>
-<p>设置charset, 在encoder 中增加一行 <code>&lt;charset&gt;UTF-8&lt;/charset&gt;</code>，重新启动系统，日志中中文显示正常了。</p>
-</blockquote>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/20/springboot-logback/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/20/springboot-logback/" title="Springboot中使用logback输出日志中文乱码">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/">
-    		常用工具换源
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
+    <p class="post-meta text-center">
         zuo_ji 发表于
         <time datetime="2020-12-13T17:11:15.000Z">2020-12-13</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/npm/" title="npm">npm</a>
-    
-
-        </span>
     </p>
-
     <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>由于长城的存在，一些开发工具在国内就不是那么好使，默认的源都在国外，网速很慢，所以需要进行换源．</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/" title="常用工具换源">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/13/vue-pipeline/">
-    		仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-13T17:11:15.000Z">2020-12-13</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a> / 
-    
-        <a href="/tags/vue/" title="vue">vue</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="Jenkins-Blue-Ocean"><a href="#Jenkins-Blue-Ocean" class="headerlink" title="Jenkins Blue Ocean"></a>Jenkins Blue Ocean</h2><p>在<code>Jenkins</code>里有一款插件让我们耳目一新,这就是 <code>Jenkins blue ocean</code>, 可以很直观地显示当前build的进程和每个stage的详细日志.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-7b61d51d07d4d091.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>出现问题以后,能够快速判断问题出现在哪,快速查看相关的日志,而不受别的stage的日志的影响.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-b75f52423dcc0e67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+        <h2 id="Jenkins-Blue-Ocean"><a href="#Jenkins-Blue-Ocean" class="headerlink" title="Jenkins Blue Ocean"></a>Jenkins Blue Ocean</h2><p>在<code>Jenkins</code>里有一款插件让我们耳目一新,这就是 <code>Jenkins blue ocean</code>, 可以很直观地显示当前build的进程和每个stage的详细日志.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-7b61d51d07d4d091.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>出现问题以后,能够快速判断问题出现在哪,快速查看相关的日志,而不受别的stage的日志的影响.<br><img src="https://upload-images.jianshu.io/upload_images/2576372-b75f52423dcc0e67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>这一良好的设计也被我司的设计人员心水, 并融入到我司的产品设计当中, 设计交到我们开发这边以后,经过前期的调研发现,目前并没有组件能够实现类型的功能.既然找不到,那就只能参考Jenkins的设计,自行开发一个. </p>
 <p>Jenkins pipeline是用svg实现的,前端是react, 整个代码不是特别优雅,代码冗长, 业务逻辑和界面渲染的逻辑混在一块, 特别是曲线描绘部分的代码,看得云里雾里, 所以干脆弃之不用,只采用了他的一些样式.</p>
 <h2 id="SVG简介"><a href="#SVG简介" class="headerlink" title="SVG简介"></a>SVG简介</h2><p>SVG 是一种基于 XML 语法的图像格式，全称是可缩放矢量图（Scalable Vector Graphics）。其他图像格式都是基于像素处理的，SVG 则是属于对图像的形状描述，所以它本质上是文本文件，体积较小，且不管放大多少倍都不会失真。<br>SVG 文件可以直接插入网页，成为 DOM 的一部分，然后用 JavaScript 和 CSS 进行操作。<br>SVG是基于xml的文本语言, 这就意味着他可以被搜索,索引和压缩,并且可以直接被任何的文本编辑器进行编辑处理.</p>
@@ -578,131 +163,142 @@ Future task2               :         des4, after des2, 5d</pre>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/SVG">https://developer.mozilla.org/en-US/docs/Web/SVG</a></li>
 </ul>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/13/vue-pipeline/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/13/vue-pipeline/" title="仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
     </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/Web%E6%8A%80%E6%9C%AF/">Web技术</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/10/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">
-    		Springboot打包瘦身
-    	</a>
-    </h3>
-
-    </header>
     <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-10T19:11:15.000Z">2020-12-10</time>
-        &nbsp;&nbsp;
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/coding/">coding</a>
+        </span>
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/java/" title="java">java</a> / 
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a> / 
     
-        <a href="/tags/springboot/" title="springboot">springboot</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>Springboot</strong> 默认的打包方式会将所有的依赖都打到jar包里，导致打包以后的文件体积巨大，少则几十M，多则上百M，内网网络环境当中还不怎么影响，但是一旦部署到公网或者云服务器上时，如果网络环境不好，等待将是一个漫长的过程，极大地影响应用的快速部署和测试流程。</p>
-<p>有需求就会有解决的办法，其实早有插件做到这件事。<a target="_blank" rel="noopener" href="https://github.com/dsyer/spring-boot-thin-launcher">Spring Boot Thin Launcher</a>， 你值得拥有。</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/10/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/10/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/" title="Springboot打包瘦身">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章列表 item -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/coding/">coding</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="https://jinfang134.github.io/2020/12/10/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">
-    		ElementUI之el-upload实现base64上传
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        zuo_ji 发表于
-        <time datetime="2020-12-10T19:11:15.000Z">2020-12-10</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+        <a href="/tags/vue/" title="vue">vue</a>
     
 
         </span>
     </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>我们的系统后端使用了<code>aws</code> 的 <code>serverless</code>架构，由于<code>lambda</code>的限制，在上传文件时要先将文件转换为base64，才能进行上传，并且不能超过10M，。<br>经过一番选择，我们决定使用<code>el-upload</code>这个控件。<br><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/issues/3087">https://github.com/ElemeFE/element/issues/3087</a><br>但是，这个组件目前并没有对base64提供良好的支持。<br><a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element/blob/2a1a6360ca763139b666aaca899703931a4a672b/packages/upload/src/upload.vue">https://github.com/ElemeFE/element/blob/2a1a6360ca763139b666aaca899703931a4a672b/packages/upload/src/upload.vue</a><br>这个是组件源码。</p>
-            
-            <p class="more">
-                <a href="https://jinfang134.github.io/2020/12/10/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="https://jinfang134.github.io/2020/12/10/ElementUI%E4%B9%8Bel-upload%E5%AE%9E%E7%8E%B0base64%E4%B8%8A%E4%BC%A0/" title="ElementUI之el-upload实现base64上传">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
 </article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
+
+
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2020/12/13/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8D%A2%E6%BA%90/">
+            
+                常用工具换源
+            
+        </a>
+    </span>
+    
 
     
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2020/12/10/Springboot%E6%89%93%E5%8C%85%E7%98%A6%E8%BA%AB/">
+            
+                Springboot打包瘦身
+            
+        </a>
+    </span>
+    
+</div>
 
-    
-    <nav class="page-navigator">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">后一页</a>
-    </nav>
-    
+<!-- 文章评论 -->
+
+  
+<script src="/js/comment.js"></script>
+
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'vue-pipeline' || '2020/12/13/vue-pipeline/',
+    owner: 'jinfang134',
+    repo: 'blog-comment',
+    clientId: 'fbd15b4439e45611319e',
+    clientSecret: 'ea34d1532a04245c1c3845aabe40a9e0467312d7'
+  });
+  </script>
 
 
             </div>
@@ -833,7 +429,7 @@ Future task2               :         des4, after des2, 5d</pre>
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1609919859036.js"></script>
+<script src="/js/main.js?v=1609919859033.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
