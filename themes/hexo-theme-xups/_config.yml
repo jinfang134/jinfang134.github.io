@@ -67,9 +67,9 @@ weibo_show:
 comment:
   enable: true
   owner: jinfang134
-  repo: blog_comments
-  client_id: b08ed25e52c57993e69c
-  client_secret: 1cb9545488f0380904b87350e7c5a270ae03bab7
+  repo: blog-comment
+  client_id: fbd15b4439e45611319e
+  client_secret: ea34d1532a04245c1c3845aabe40a9e0467312d7
 
 #----------------------------
 # 是否开启云标签
@@ -145,3 +145,8 @@ mermaid: ## mermaid url https://github.com/knsv/mermaid
   version: "8.8.0" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
+
+
+#开启不算子访问统计
+busuanzi:
+    enable: true

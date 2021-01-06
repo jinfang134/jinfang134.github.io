@@ -1,11 +1,27 @@
 <footer class="footer">
     &copy;
     <% if (new Date().getFullYear() == 2016) { %>
-        <%- new Date().getFullYear() %>
+    <%- new Date().getFullYear() %>
     <% } else { %>
-        2016-<%- new Date().getFullYear() %>
+    2016-<%- new Date().getFullYear() %>
     <% } %>
 
     <a href="<%- url_for() %>">Enjoy Everyday!</a>
+
+
+    <% if (theme.busuanzi && theme.busuanzi.enable){ %>
+    <!-- 不蒜子统计 -->
+    <div>
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">
+            本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+    </div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <% } %>
+
 </footer>
 <div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
