@@ -87,6 +87,9 @@ cmM0LW1kNTp0ZXN0MTIzQDI4My4yMzQuMTIzLjIxOjQwMDA=
 ```
 ss://cmM0LW1kNTp0ZXN0MTIzQDI4My4yMzQuMTIzLjIxOjQwMDA=#shadowsock
 ```
+更新：　发现原来还有一个[官网](https://shadowsocks.org/en/config/quick-guide.html)，里面可以自动生成这个链接．
+![picture 1](https://i.loli.net/2021/01/06/t2FZVpMEwTChcUb.png)  
+
 
 ### Windows
 
