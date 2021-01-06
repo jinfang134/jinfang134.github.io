@@ -14,6 +14,8 @@ tags:
 出现问题以后,能够快速判断问题出现在哪,快速查看相关的日志,而不受别的stage的日志的影响.
 ![image.png](https://upload-images.jianshu.io/upload_images/2576372-b75f52423dcc0e67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+<!-- more -->
+
 ## 缘由
 这一良好的设计也被我司的设计人员心水, 并融入到我司的产品设计当中, 设计交到我们开发这边以后,经过前期的调研发现,目前并没有组件能够实现类型的功能.既然找不到,那就只能参考Jenkins的设计,自行开发一个. 
 
