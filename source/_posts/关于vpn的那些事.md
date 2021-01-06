@@ -131,3 +131,7 @@ Shadowrocket 应该属于目前最火的 Shadowsocks iOS 客户端了，功能�
 **OpenWrt LuCI for Shadowsocks-libev**: [GitHub](https://github.com/shadowsocks/luci-app-shadowsocks/releases)
 
 在 OpenWrt/LEDE 的路由器中使用 Shadowsocks，配合 ChinaDNS 和 DNS-Forwarder 使用更好，在这里查看 [OpenWrt/LEDE Shadowsocks](https://www.vpnto.net/posts/shadowsocks-openwrt/) 安装教程。
+
+## 其它方案
+
+与shadowsocks齐名的还有[v2ray](https://toutyrater.github.io/prep/),部署要复杂得多，可以作为一个备选项.
