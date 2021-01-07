@@ -69,7 +69,12 @@ Shadowsocks 目前的客户端基本各个平台上面的都有。本文主要�
 
 规则如下：
 ```js
- 'ss://'+ base64(`${method}:${password}@${host}:${port}`)+'#'+name
+const method='aes-256-gcm'
+const password='password'
+const host='107.174.250.123'
+const port='8388'
+const name='myss'
+console.log( "ss://" + btoa(`${method}:${password}@${host}:${port}`)+ '#' + name )
 ```
 例如：
 ```properties
