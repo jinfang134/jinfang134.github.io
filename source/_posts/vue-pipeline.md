@@ -1,14 +1,14 @@
 ---
 title: 仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件
-date: 2021-01-07 17:11:15
+date: 2021-01-06 17:11:15
 categories: 
     - coding
 tags:
     - vue
     - 前端
+thumbnail: https://i.loli.net/2021/01/07/o6cSbqY9QwVsmnL.png
 ---
 
-## Jenkins Blue Ocean
 在`Jenkins`里有一款插件让我们耳目一新,这就是 `Jenkins blue ocean`, 可以很直观地显示当前build的进程和每个stage的详细日志.
 ![picture 3](https://i.loli.net/2021/01/07/COY5HGkq3NptJTs.png)  
 
