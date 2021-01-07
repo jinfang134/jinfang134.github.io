@@ -1,6 +1,6 @@
 ---
 title: 仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件
-date: 2020-12-13 17:11:15
+date: 2021-01-07 17:11:15
 categories: 
     - coding
 tags:
@@ -10,14 +10,15 @@ tags:
 
 ## Jenkins Blue Ocean
 在`Jenkins`里有一款插件让我们耳目一新,这就是 `Jenkins blue ocean`, 可以很直观地显示当前build的进程和每个stage的详细日志.
-![image.png](https://upload-images.jianshu.io/upload_images/2576372-7b61d51d07d4d091.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![picture 3](https://i.loli.net/2021/01/07/COY5HGkq3NptJTs.png)  
+
 出现问题以后,能够快速判断问题出现在哪,快速查看相关的日志,而不受别的stage的日志的影响.
-![image.png](https://upload-images.jianshu.io/upload_images/2576372-b75f52423dcc0e67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![picture 2](https://i.loli.net/2021/01/07/YUn8oKIDEgmMWCX.png)  
 
 <!-- more -->
 
 ## 缘由
-这一良好的设计也被我司的设计人员心水, 并融入到我司的产品设计当中, 设计交到我们开发这边以后,经过前期的调研发现,目前并没有组件能够实现类型的功能.既然找不到,那就只能参考Jenkins的设计,自行开发一个. 
+jenkins pipeline 这一良好的可视化设计也被我司的设计人员心水, 并融入到我司的产品设计当中, 设计交到我们开发这边以后,经过前期的调研发现,目前并没有组件能够实现类型的功能.既然找不到,那就只能参考Jenkins的设计,自行开发一个. 
 
 Jenkins pipeline是用svg实现的,前端是react, 整个代码不是特别优雅,代码冗长, 业务逻辑和界面渲染的逻辑混在一块, 特别是曲线描绘部分的代码,看得云里雾里, 所以干脆弃之不用,只采用了他的一些样式.
 
@@ -40,7 +41,7 @@ vue与SVG似乎天然是一对最好的搭档, 利用vue可以将svg里的一个
 1. 找到一个入度为0的节点v
 2. 删除该节点
 3. 重复1,2这个过程，直到所有的节点都被删除
-```
+```js
   topologicalSorting() {
     let visited = [];
     let result = []
@@ -60,7 +61,7 @@ vue与SVG似乎天然是一对最好的搭档, 利用vue可以将svg里的一个
 ```
 ### 是否有环
 判断图是否有环其实有很多种方法，在前一个算法中，我们已经得到图的拓扑排序结果，那么只需要判断一下拓扑排序的结果的长度是否小于图的节点数，如果小于，那么图中有环。
-```
+```js
 hasCircle() {
     let list = this.topologicalSorting()
     return list.length < this.nodes.length;
@@ -69,9 +70,10 @@ hasCircle() {
 ### 图的最长路径
 在有向图的渲染当中，如果使用广搜或者深搜的算法来遍历节点，并按照遍历的顺序来安排节点的位置，那么会出现最终的节点不一定出现在最右侧的情况，这样pipeline图就显得不够直观，不能够一目了然地看出图的开始节点和结束节点。
 所以，我使用的算法是求解图的最长路径，将路径当中的节点从拓扑排序的结果当中去除，不断重复这个过程，直到所有的节点都被计算出来，最终生成的效果如下图。
-![image.png](https://upload-images.jianshu.io/upload_images/2576372-d35149f00e00c525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![picture 5](https://i.loli.net/2021/01/07/o6cSbqY9QwVsmnL.png)  
+
 最长路径使用递归算法实现：
-```
+```js
 /**
    * 查找从第{index}个节点开始的最长路径，返回经过的未被计算位置的节点,
    * @param {*} index
@@ -98,7 +100,7 @@ hasCircle() {
 ```
 ### 判断图是否是树
 当给定的数据实际描述的是一棵树时，可以针对性地进行一些优化，所以我们首先需要判断是否是一棵树，判断树的方法就是判断某个节点在邻接表中重复出现，因为每个树节点的入度只能为1。所以如果某个节点的入度大于1,那么肯定是一个图。
-```
+```js
   /**
    * 判断当前的图是否是一棵树
    */
@@ -117,8 +119,9 @@ hasCircle() {
 ```
 ### 计算树在y轴上占据的宽度
 为了给某个树节点分配坐标位置，除了要知道他的父节点以外，还需要知道他需要的宽度，这里使用递归算法来实现，树的宽度是子树宽度的和。
+
 **`优化：`** 可以用记忆化搜索的方法来优化性能，用一个数组来存储子树的宽度，这样在递归调用的时候避免了大量的重复计算，这里因为问题规模一般不大，就没有这么做了。
-```
+```js
   /**
     * 计算一个树要占的宽度
     * @param {*} index
@@ -138,7 +141,7 @@ hasCircle() {
 ```
 ### 计算每个树节点的位置
 知道树的宽度和树的父节点坐标，就可以递归地计算每个子节点的坐标。
-```
+```js
   /**
    * 为树计算每个节点的位置
    * @param {*} index
@@ -160,7 +163,7 @@ hasCircle() {
   }
 ```
 最终渲染效果如下图：
-![image.png](https://upload-images.jianshu.io/upload_images/2576372-6cdeec64897ebaa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![picture 6](https://i.loli.net/2021/01/07/sruVQ7jnDd6PMKp.png)  
 
 
 
