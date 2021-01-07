@@ -939,14 +939,21 @@ code {
   font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
 }
 code {
-  word-break: break-all;
-  background: #fee;
-  text-shadow: 0 1px #fff;
-  padding: 0 0.3em;
+  background: #d1984c;
+  color: #fff;
+  opacity: 0.85;
+  padding: 3px 3px 1px 3px;
+  -ms-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  margin: 0 4px;
 }
 pre code {
   background: none;
   text-shadow: none;
+  color: #666;
   padding: 0;
 }
 .highlight pre {

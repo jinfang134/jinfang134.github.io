@@ -6,7 +6,7 @@
     <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     <meta name="google-site-verification" content="5_E3xlNpcMTz2kVTRmAaFdU-CDFNMsouMefyglBzgqw" />
     
-    <title>Webpack SourceMap 配置 | On the road</title>
+    <title>使用nginx搭建日志服务器 | On the road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="前端, Web, 前端开发, Candice" >
     <meta name="description" content="个人前端小站　for Candice" >
@@ -61,19 +61,19 @@ var _hmt = _hmt || [];
         <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
         <ul class="menu hidden" id="JELON__menu">
             
-            <li rel="/2020/12/20/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2021/01/07/%E4%BD%BF%E7%94%A8nginx%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html" class="item ">
                 <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
             </li>
             
-            <li rel="/2020/12/20/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2021/01/07/%E4%BD%BF%E7%94%A8nginx%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html" class="item ">
                 <a href="/categories/coding/" title="编程" class="icon-lab">&nbsp;编程</a>
             </li>
             
-            <li rel="/2020/12/20/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2021/01/07/%E4%BD%BF%E7%94%A8nginx%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html" class="item ">
                 <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
             </li>
             
-            <li rel="/2020/12/20/webpack%20sourcemap/index.html" class="item ">
+            <li rel="/2021/01/07/%E4%BD%BF%E7%94%A8nginx%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html" class="item ">
                 <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
             </li>
             
@@ -124,36 +124,50 @@ var _hmt = _hmt || [];
 <!-- 文章 -->
 <article class="post article">
     <header class="text-center">
-        <h3 class="post-title"><span>Webpack SourceMap 配置</span></h3>
+        <h3 class="post-title"><span>使用nginx搭建日志服务器</span></h3>
     </header>
     <p class="post-meta text-center">
         zuo_ji 发表于
-        <time datetime="2020-12-20T19:11:15.000Z">2020-12-20</time>
+        <time datetime="2021-01-07T14:16:55.000Z">2021-01-07</time>
     </p>
     <div class="post-content">
-        <p>最近项目中遇到了sourcemap不生效的问题,而且是有的项目生效,有的项目不生效, 经过一番查找资料,最终将问题解决,因此写篇文章以作备忘,也给后来者一个参考</p>
-<h2 id="关于webpack-sourcemap"><a href="#关于webpack-sourcemap" class="headerlink" title="关于webpack sourcemap"></a>关于webpack sourcemap</h2><p>其实<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/devtool/">官方文档</a>已经写得比较详细了, 需要注意的点是：</p>
+        <p>网站在运行时会产生很多日志文件，需要查询日志一般需要登录到服务器上，再down下来进行搜索检索，非常不方便，业内有一些开源的方案可以将日志文件进行聚合，然后导入到<code>elasticsearch</code>当中，再用kibana进行前端日志展示与检索．即所谓的ELK(elasticsearch+Logstash+Kibana)．</p>
+<p>这个方案当然好是肯定好，logstash可以聚合多个应用的日志文件，同时借助elasticsearch的搜索引擎能力，可以快速地通过关键字查询日志，进行日志分析．</p>
+<p>但是对于一个小型应用来说，这么做未免就有点大动干戈了，对于日志量不大的单体应用来说，我们可以将日志目录用ngnix来挂载到一个contextpath上，这样就可以在线对日志进行一些简单的查询，此即是本文要讨论的问题．</p>
+<a id="more"></a>
+
+<h2 id="基本需求"><a href="#基本需求" class="headerlink" title="基本需求"></a>基本需求</h2><p>假设我们有一个站点<code>http://www.foobar.com</code>,他的日志存在<code>/home/ubuntu/log/</code>这个目录下面，当我们访问<code>http://www.foobar.com/log</code> 时就可以看到日志的内容</p>
 <ol>
-<li>当<code>mode: production</code>时不能用 <code>Development</code> 模式的sourcemap, 否则文件名都不会显示出来, 我测试时在production模式下使用<code>eval-source-map</code>时就出现了这种情况。</li>
-<li><code>mode: production</code> 时推荐使用 <code>devtool: &#39;source-map&#39;</code>。</li>
-<li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。<a id="more"></a>
-<h2 id="Typescript项目"><a href="#Typescript项目" class="headerlink" title="Typescript项目"></a>Typescript项目</h2>对于typescript项目, 如果你用的<code>ts-loader</code>, 请务必注意两个地方:</li>
-<li>tsconfig.json当中配置<code>sourceMap: true</code>, 以下为一个示例配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;forceConsistentCasingInFileNames&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;allowSyntheticDefaultImports&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;~common/*&quot;</span>: [<span class="string">&quot;src/common/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~model/*&quot;</span>: [<span class="string">&quot;src/model/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~orm/*&quot;</span>: [<span class="string">&quot;src/orm/*&quot;</span>],</span><br><span class="line">      <span class="string">&quot;~load/*&quot;</span>: [<span class="string">&quot;src/load/*&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;es5&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">      <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">      <span class="string">&quot;es2015&quot;</span>,</span><br><span class="line">      <span class="string">&quot;esnext.asynciterable&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;node&quot;</span>],</span><br><span class="line">    <span class="string">&quot;typeRoots&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;node_modules/@types&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src/server/handler.ts&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>正确配置<code>ts-loader</code><br>我们的ts项目sourcemap无法显示行号和源代码路径,就是挂在这里,对此,<code>ts-loader</code>官方github里有一个<a target="_blank" rel="noopener" href="https://github.com/TypeStrong/ts-loader/tree/master/examples/fork-ts-checker-webpack-plugin">example</a>, ts-loader一定要记得配置<code>transpileOnly: true</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">          &#123;</span><br><span class="line">              test: <span class="regexp">/.tsx?$/</span>,</span><br><span class="line">              use: [</span><br><span class="line">                  &#123; <span class="attr">loader</span>: <span class="string">&#x27;ts-loader&#x27;</span>, <span class="attr">options</span>: &#123; <span class="attr">transpileOnly</span>: <span class="literal">true</span> &#125; &#125;  </span><br><span class="line">              ],</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
+<li>日志按日期分成多个文件，需要列出文件列表<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ll /home/ubuntu/<span class="built_in">log</span></span><br><span class="line">total 19M</span><br><span class="line">-rw-r--r-- 1 ubuntu ubuntu 470K Dec 22 23:55 2020-12-22.log</span><br><span class="line">-rw-r--r-- 1 ubuntu ubuntu 644K Dec 23 23:45 2020-12-23.log</span><br><span class="line">-rw-r--r-- 1 ubuntu ubuntu 950K Dec 24 23:45 2020-12-24.log</span><br><span class="line">-rw-r--r-- 1 ubuntu ubuntu 260K Dec 25 23:45 2020-12-25.log</span><br></pre></td></tr></table></figure></li>
+<li>当访问<code>http://www.foobar.com/log</code>需要输入用户名密码</li>
+<li>可以直接在网页显示日志内容，而不是点击下载</li>
+<li>文件编码为<code>utf-8</code></li>
 </ol>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>先来看一眼完整的配置文件</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> ;</span><br><span class="line">    <span class="attribute">server_name</span> www.foobar.com;</span><br><span class="line">    <span class="attribute">add_header</span> Content-Security-Policy <span class="string">&#x27;upgrade-insecure-requests&#x27;</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> HOST $HOST;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP $remote_addr;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Request-Url $request_uri;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> /log &#123;</span><br><span class="line">        <span class="attribute">autoindex</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line">        <span class="attribute">auth_basic</span>           <span class="string">&quot;Administrator&#x27;s Area&quot;</span>;</span><br><span class="line">        <span class="attribute">auth_basic_user_file</span> /etc/apache2/.htpasswd; 	</span><br><span class="line">        <span class="attribute">root</span> /home/ubuntu/log;</span><br><span class="line">        <span class="attribute">rewrite</span> <span class="string">&quot;^/log/(.*)$&quot;</span> /<span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="section">types</span> &#123;</span><br><span class="line">            text/plain log;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<ol>
+<li><code>autoindex on;</code> 这行是为了列出文件目录</li>
+<li><code>types</code>是为了告诉nginx哪些后缀文件可以作为<code>text/plain</code>返回 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">types &#123;</span><br><span class="line">    text&#x2F;plain log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>为了保护文件内容，加了auth_basic认证，用以下命令生成用户名和密码 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo htpasswd -c /etc/apache2/.htpasswd username</span><br></pre></td></tr></table></figure>
+ 然后在nginx里配置如下信息就可以了． <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">auth_basic</span>           <span class="string">&quot;Administrator&#x27;s Area&quot;</span>;</span><br><span class="line"><span class="attribute">auth_basic_user_file</span> /etc/apache2/.htpasswd; </span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>浏览器输入<a target="_blank" rel="noopener" href="http://www.foobar.com/log%E4%BB%A5%E5%90%8E%EF%BC%8C%E4%BC%9A%E5%BC%B9%E5%87%BA%E5%A6%82%E4%B8%8B%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81">http://www.foobar.com/log以后，会弹出如下对话框，提示输入用户名和密码</a><br><img src="https://i.loli.net/2021/01/07/ndV2skv9QUWKq1A.png" alt="picture 7"><br>输入完以后，就会显示如下的文件列表<br><img src="https://i.loli.net/2021/01/07/MsqSrOPNtXV1JWp.png" alt="picture 8"><br>点击单个链接就可以直接查看具体的日志文件内容了，而不需要再下载．</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
     </div>
     <p class="post-meta">
         <span class="post-cat">分类：
-            <a class="cat-link" href="/categories/coding/">coding</a>
+            <a class="cat-link" href="/categories/web%E6%8A%80%E6%9C%AF/">web技术</a>
         </span>
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/sourcemap/" title="sourcemap">sourcemap</a> / 
+        <a href="/tags/nginx/" title="nginx">nginx</a> / 
     
-        <a href="/tags/webpack/" title="webpack">webpack</a>
+        <a href="/tags/%E6%97%A5%E5%BF%97/" title="日志">日志</a>
     
 
         </span>
@@ -179,20 +193,16 @@ var _hmt = _hmt || [];
     
     <span class="prev fl">
         上一篇<br >
-        <a href="/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
-            
-                常用软件安装
-            
-        </a>
+        <a href="javascript: void(0);">没有上一篇了</a>
     </span>
     
 
     
     <span class="next fr">
         下一篇<br >
-        <a href="/2020/12/20/springboot-logback/">
+        <a href="/2021/01/06/vue-pipeline/">
             
-                Springboot中使用logback输出日志中文乱码
+                仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件
             
         </a>
     </span>
@@ -271,7 +281,7 @@ var _hmt = _hmt || [];
   <script>
   JELON.Comment({
     container: 'comments',
-    label: 'webpack sourcemap' || '2020/12/20/webpack sourcemap/',
+    label: '使用nginx搭建日志服务器' || '2021/01/07/使用nginx搭建日志服务器/',
     owner: 'jinfang134',
     repo: 'blog-comment',
     clientId: 'fbd15b4439e45611319e',
@@ -417,7 +427,7 @@ var _hmt = _hmt || [];
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1610003678444.js"></script>
+<script src="/js/main.js?v=1610003678439.js"></script>
 
     <!-- <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script> -->
     
