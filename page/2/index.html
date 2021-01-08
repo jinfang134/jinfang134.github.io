@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-08 03:20:30" itemprop="dateModified" datetime="2021-01-08T03:20:30+00:00">2021-01-08</time>
+                <time title="Modified: 2021-01-08 07:57:31" itemprop="dateModified" datetime="2021-01-08T07:57:31+00:00">2021-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -288,7 +288,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-08 03:20:30" itemprop="dateModified" datetime="2021-01-08T03:20:30+00:00">2021-01-08</time>
+                <time title="Modified: 2021-01-08 07:57:31" itemprop="dateModified" datetime="2021-01-08T07:57:31+00:00">2021-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -369,7 +369,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-08 03:20:30" itemprop="dateModified" datetime="2021-01-08T03:20:30+00:00">2021-01-08</time>
+                <time title="Modified: 2021-01-08 07:57:31" itemprop="dateModified" datetime="2021-01-08T07:57:31+00:00">2021-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -676,6 +676,19 @@ window.addEventListener('pjax:success', () => {
 
 
 
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
     <div id="pjax">
