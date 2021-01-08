@@ -647,12 +647,6 @@ gitalk:
   language:
 
 
-  # enable: true
-  # owner: jinfang134
-  # repo: blog-comment
-  # client_id: fbd15b4439e45611319e
-  # client_secret: ea34d1532a04245c1c3845aabe40a9e0467312d7
-
 
 # ---------------------------------------------------------------
 # Post Widgets & Content Sharing Services
@@ -819,7 +813,7 @@ pdf:
 
 # Mermaid tag
 mermaid:
-  enable: false
+  enable: true
   # Available themes: default | dark | forest | neutral
   theme: forest
 
