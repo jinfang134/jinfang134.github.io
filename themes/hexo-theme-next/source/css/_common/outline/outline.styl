@@ -1,11 +1,17 @@
 .container {
   min-height: 100%;
   position: relative;
+  // background: url(https://i.loli.net/2021/01/08/q7of2ZvLXdniwtG.jpg) no-repeat fixed center;
+  background: url(https://i.loli.net/2021/01/08/ptRLJxreBFb8USw.png) no-repeat fixed center;
 }
+
+
 
 .main-inner {
   margin: 0 auto;
   width: $content-desktop;
+  background-color: rgba(255,255,255,0.9);
+  padding: 0 32px;
 
   +desktop-large() {
     width: $content-desktop-large;
@@ -13,6 +19,9 @@
 
   +desktop-largest() {
     width: $content-desktop-largest;
+  }
+   +mobile() {
+    padding: 0 10px;
   }
 }
 

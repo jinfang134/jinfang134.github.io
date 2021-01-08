@@ -3,7 +3,17 @@
 .footer {
   color: $grey-dark;
   font-size: $font-size-small;
-  padding: 20px 0;
+  padding: 20px 32px;
+  margin: 0 auto;
+  width: $content-desktop;
+  //  width: $content-desktop-large;
+   +desktop-large() {
+    width: $content-desktop-large;
+  }
+
+  +desktop-largest() {
+    width: $content-desktop-largest;
+  }
 
   &.footer-fixed {
     bottom: 0;
