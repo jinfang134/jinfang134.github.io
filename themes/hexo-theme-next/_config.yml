@@ -120,6 +120,7 @@ menu:
   categories: /categories/ || fa fa-th
   tags: /tags/ || fa fa-tags
   archives: /archives/ || fa fa-archive
+  opensource: /opensource/ || fa fa-sitemap
   about: /about/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   # sitemap: /sitemap.xml || fa fa-sitemap
@@ -128,7 +129,7 @@ menu:
 # Enable / Disable menu icons / item badges.
 menu_settings:
   icons: true
-  badges: true
+  badges: false
 
 
 # ---------------------------------------------------------------
@@ -177,8 +178,8 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || fab fa-github
-  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  GitHub: https://github.com/jinfang134 || fab fa-github
+  E-Mail: mailto:jinfang134@sina.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -633,17 +634,24 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: jinfang134 # GitHub repo owner
+  repo: blog-comment # Repository name to store issues
+  client_id: fbd15b4439e45611319e # GitHub Application Client ID
+  client_secret: ea34d1532a04245c1c3845aabe40a9e0467312d7 # GitHub Application Client Secret
+  admin_user: jinfang134 # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language:
+
+
+  # enable: true
+  # owner: jinfang134
+  # repo: blog-comment
+  # client_id: fbd15b4439e45611319e
+  # client_secret: ea34d1532a04245c1c3845aabe40a9e0467312d7
 
 
 # ---------------------------------------------------------------
