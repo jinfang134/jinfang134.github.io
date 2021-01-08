@@ -943,10 +943,13 @@ pre .javascript .function {
 .container {
   min-height: 100%;
   position: relative;
+  background: url("https://i.loli.net/2021/01/08/ptRLJxreBFb8USw.png") no-repeat fixed center;
 }
 .main-inner {
   margin: 0 auto;
   width: 700px;
+  background-color: rgba(255,255,255,0.9);
+  padding: 0 32px;
 }
 @media (min-width: 1200px) {
   .main-inner {
@@ -956,6 +959,11 @@ pre .javascript .function {
 @media (min-width: 1600px) {
   .main-inner {
     width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  .main-inner {
+    padding: 0 10px;
   }
 }
 @media (max-width: 767px) {
@@ -1218,7 +1226,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #185e21;
+  background: #5bbe1d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1420,7 +1428,19 @@ pre .javascript .function {
 .footer {
   color: #999;
   font-size: 0.875em;
-  padding: 20px 0;
+  padding: 20px 32px;
+  margin: 0 auto;
+  width: 700px;
+}
+@media (min-width: 1200px) {
+  .footer {
+    width: 800px;
+  }
+}
+@media (min-width: 1600px) {
+  .footer {
+    width: 900px;
+  }
 }
 .footer.footer-fixed {
   bottom: 0;
@@ -2246,12 +2266,9 @@ hr {
   }
 }
 .footer {
+  border-top: 3px dashed #f3941d;
   background: var(--content-bg-color);
   color: var(--text-color);
-  padding: 10px 0;
-}
-.footer-inner {
-  text-align: left;
 }
 @media (max-width: 767px) {
   .footer-inner {
@@ -2371,8 +2388,12 @@ hr {
 .posts-expand .post-eof {
   display: none;
 }
+.posts-expand .post-block:first-child {
+  padding-bottom: 30px;
+}
 .posts-expand .post-block:not(:first-child) {
-  margin-top: 120px;
+  padding: 30px 0px;
+  border-top: 3px dashed #f3941d;
 }
 .posts-expand .post-title,
 .posts-expand .post-meta {
