@@ -2,7 +2,7 @@
 title: ElementUI之el-upload实现base64上传
 date: 2020-12-10 19:11:15
 categories:
-  - coding
+    - 编程技术
 author: zuo_ji
 tags: 
  - 前端

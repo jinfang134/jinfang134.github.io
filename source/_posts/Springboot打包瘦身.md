@@ -3,8 +3,7 @@ title: Springboot打包瘦身
 date: 2020-12-10 19:11:15
 author: zuo_ji
 categories:
-  - Web技术
-  - coding
+    - 编程技术
 tags: 
   - java
   - springboot

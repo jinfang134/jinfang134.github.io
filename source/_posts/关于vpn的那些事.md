@@ -3,7 +3,7 @@ title: 关于vpn的那些事
 date: 2020-12-30 19:11:15
 author: zuo_ji
 categories:
-  - Web技术
+    - 编程技术
 tags:
   - vpn
   - shadowsocks

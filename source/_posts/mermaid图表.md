@@ -3,7 +3,7 @@ title: mermaid图表
 date: 2020-12-25 19:11:15
 author: zuo_ji
 categories:
-  - markdown
+    - 编程技术
 tags:
   - markdown
 thumbnail:

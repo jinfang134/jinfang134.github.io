@@ -1,8 +1,8 @@
 ---
 title: 仿Jenkins Blue Ocean 实现的一个Vue Pipeline插件
 date: 2021-01-06 17:11:15
-categories: 
-    - coding
+categories:
+    - 编程技术
 tags:
     - vue
     - 前端

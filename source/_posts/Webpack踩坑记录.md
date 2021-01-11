@@ -2,7 +2,10 @@
 layout: post
 title: Webpack踩坑记录
 date: 2021-01-07 15:54:58
+categories:
+    - 编程技术
 tags:
+  - webpack
 ---
 在使用webpack进行构建打包时，经常会碰到一些莫名其妙的坑，开贴记录一下，方便以后碰到同类问题的时候查找，同时也给大家提供一个借鉴．
 

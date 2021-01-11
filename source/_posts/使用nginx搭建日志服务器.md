@@ -2,11 +2,11 @@
 layout: post
 title: 使用nginx搭建日志服务器
 date: 2021-01-07 14:16:55
+categories:
+    - 编程技术
 tags:
     - nginx
     - 日志
-categories:
-    - web技术
 thumbnail: https://i.loli.net/2021/01/07/ndV2skv9QUWKq1A.png
 ---
 

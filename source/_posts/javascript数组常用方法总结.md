@@ -3,8 +3,7 @@ title: javascript数组常用方法总结
 date: 2020-12-05 19:11:15
 author: zuo_ji
 categories:
-  - Web技术
-  - coding
+    - 编程技术
 tags: 
   - js
   - 前端

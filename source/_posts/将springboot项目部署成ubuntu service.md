@@ -6,7 +6,7 @@ tags:
     - ubuntu
     - springboot
 categories:
-    - coding
+    - 编程技术
 ---
 在部署springboot项目时，为了运行维护的方便，可将其部署为ubuntu service,并且可随系统启动而自动启动，本文将介绍一种比较简单的方式来实现此功能。
 
