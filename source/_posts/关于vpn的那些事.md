@@ -14,7 +14,24 @@ blogexcerpt:
 在外企上班，公司网络是直接vpn到新加坡的，也经常要用slack等工具进行线上交流，没个梯子还经常挺不方便的。最近抽空折腾了一下，写个文章记录一下过程。
 
 ## 服务器
-服务器我用的是[virmach](https://billing.virmach.com/index.php?rp=/store/kvm-and-ssd-windows-vps),1.25刀一个月,价格还是挺实惠的，500GB的网络带宽应该是用不完的，至于网络速度，我测试了一下，youtube里的720p视频可以流畅播放。
+服务器我用的是[virmach](https://billing.virmach.com/index.php?rp=/store/kvm-and-ssd-windows-vps),1.25刀一个月,价格还是挺实惠的，500GB的网络带宽应该是用不完的，~~至于网络速度，我测试了一下，youtube里的720p视频可以流畅播放。~~
+
+在购买之前，最好先买一个月的主机试用一下，不同的地区的网络状况是不一样的，可以用[站长工具](https://www.ping.cn/http/)来测一下速，我先后买过两个区的主机，本人在上海，第一个主机买的芝加哥，联通速度比较满意，移动网络有点卡，但是也能用，但是第二个主机在水牛城，联通速度却很卡，网络延时很大，移动的网络挺好延时一秒多．所以根据自己的需求和实际情况做一个使用前测试很有必要．或者可以购买多个区的来做备份，但也最好提前测试一下．
+
+### 测试方法
+在目标主机上用nginx搭一个静态网站，里面放一个150k的`index.html`文件
+```docker
+docker run --name some-nginx -p 80:80 -v /home/ubuntu/www/:/usr/share/nginx/html:ro -d nginx
+```
+
+## 测试结果
+
+![测试的整体情况](https://i.loli.net/2021/01/29/P2IejHOcS1hsfLz.png)  
+
+![水牛城主机，可以看出上海联通延迟很大](https://i.loli.net/2021/01/29/YMe8r3zwLXtC5o7.png)  
+
+![上海移动延迟比较满意，只有1.55s](https://i.loli.net/2021/01/29/c12n5pFzegNh4db.png)  
+
 
 ![](/images/2020-12-31-00-28-50.png)
 <!-- more -->
