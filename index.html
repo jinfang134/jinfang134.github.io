@@ -203,6 +203,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jinfang134.github.io/2021/02/03/vue%E6%96%87%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%AE%9A%E4%B9%89%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.loli.net/2021/01/08/HuxlfYDSzZaFN7U.jpg">
+      <meta itemprop="name" content="Zuo jinfang">
+      <meta itemprop="description" content="以梦为马，不负韶华">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="On The Road">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/03/vue%E6%96%87%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%AE%9A%E4%B9%89%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">vue文件不能跳转到定义的解决办法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-02-03 12:46:59 / Modified: 05:04:48" itemprop="dateCreated datePublished" datetime="2021-02-03T12:46:59+00:00">2021-02-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在vscode里面，vue项目里的引入文件不能跳转到定义，在开发过程中，总是要手动去查找文件再打开，挺不方便的.</p>
+<p><strong>解决方法：</strong></p>
+<ol>
+<li>添加jsconfig.json文件,添加<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases">webpack的alias</a><blockquote>
+<p>jsconfig.json是干嘛的呢？</p>
+<p>它用来表明当前的目录是一个js项目的根目录，可以配置一些js服务的特性</p>
+</blockquote>
+</li>
+</ol>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;module&quot;</span>: <span class="string">&quot;commonjs&quot;</span>,</span><br><span class="line">   <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es6&quot;</span>,</span><br><span class="line">   <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;.&quot;</span>,</span><br><span class="line">   <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">     <span class="string">&quot;@/*&quot;</span>: [<span class="string">&quot;./src/*&quot;</span>] </span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="string">&quot;exclude&quot;</span>: [<span class="string">&quot;node_modules&quot;</span>],</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>babel.config.js里的presets添加<code>@vue/app</code> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    presets: [</span><br><span class="line">        <span class="string">&#x27;@vue/cli-plugin-babel/preset&#x27;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/preset-typescript&quot;</span>,</span><br><span class="line">        <span class="string">&#x27;@vue/app&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="string">&quot;@babel/plugin-transform-runtime&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/plugin-syntax-dynamic-import&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/plugin-transform-sticky-regex&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/plugin-proposal-optional-chaining&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/plugin-proposal-nullish-coalescing-operator&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://jinfang134.github.io/2021/01/11/%E9%BB%91%E7%9F%B3%E5%8F%B7%E6%B2%89%E8%88%B9%E6%96%87%E7%89%A9%E5%8F%82%E8%A7%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -234,7 +305,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -315,7 +386,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -397,7 +468,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -481,7 +552,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -564,7 +635,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -646,7 +717,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -735,7 +806,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -826,7 +897,7 @@ Future task2               :         des4, after des2, 5d</pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -907,7 +978,7 @@ Future task2               :         des4, after des2, 5d</pre>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
+                <time title="Modified: 2021-02-03 05:04:48" itemprop="dateModified" datetime="2021-02-03T05:04:48+00:00">2021-02-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -935,92 +1006,6 @@ Future task2               :         des4, after des2, 5d</pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/12/23/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jinfang134.github.io/2020/12/20/webpack%20sourcemap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.loli.net/2021/01/08/HuxlfYDSzZaFN7U.jpg">
-      <meta itemprop="name" content="Zuo jinfang">
-      <meta itemprop="description" content="以梦为马，不负韶华">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="On The Road">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/20/webpack%20sourcemap/" class="post-title-link" itemprop="url">Webpack SourceMap 配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-12-20 19:11:15" itemprop="dateCreated datePublished" datetime="2020-12-20T19:11:15+00:00">2020-12-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-29 04:50:57" itemprop="dateModified" datetime="2021-01-29T04:50:57+00:00">2021-01-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">编程技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近项目中遇到了sourcemap不生效的问题,而且是有的项目生效,有的项目不生效, 经过一番查找资料,最终将问题解决,因此写篇文章以作备忘,也给后来者一个参考</p>
-<h2 id="关于webpack-sourcemap"><a href="#关于webpack-sourcemap" class="headerlink" title="关于webpack sourcemap"></a>关于webpack sourcemap</h2><p>其实<a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/devtool/">官方文档</a>已经写得比较详细了, 需要注意的点是：</p>
-<ol>
-<li>当<code>mode: production</code>时不能用 <code>Development</code> 模式的sourcemap, 否则文件名都不会显示出来, 我测试时在production模式下使用<code>eval-source-map</code>时就出现了这种情况。</li>
-<li><code>mode: production</code> 时推荐使用 <code>devtool: &#39;source-map&#39;</code>。</li>
-<li><code>mode: development</code> 时推荐使用 <code>devtool: &#39;eval-source-map&#39;</code>, 因为可以显示行号和源文件名,便于排查问题, 但这个模式初始化的时候要稍微慢一点。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/20/webpack%20sourcemap/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1111,7 +1096,7 @@ Future task2               :         des4, after des2, 5d</pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
