@@ -24,23 +24,22 @@
     var CONFIG = {"hostname":"jinfang134.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="vue-pipeline    github: https:&#x2F;&#x2F;github.com&#x2F;jinfang134&#x2F;vue-pipeline demo: https:&#x2F;&#x2F;jinfang134.github.io&#x2F;vue-pipeline&#x2F;   vue-schedule-board    github: https:&#x2F;&#x2F;github.com&#x2F;jinfang134&#x2F;vue-schedule-board dem">
-<meta property="og:type" content="website">
-<meta property="og:title" content="开源项目">
-<meta property="og:url" content="https://jinfang134.github.io/opensource/index.html">
+  <meta name="description" content="项目当中遇到一些问题，需要排查所有的依赖的license信息，需要将所有的依赖的license信息都列出来，由于依赖的继承和传递关系，依赖的数量非常庞大，因此手工来完成这个任务是不太现实，好在已经有很好的开源工具实现了这个功能．">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开源软件license管理">
+<meta property="og:url" content="https://jinfang134.github.io/2021/04/16/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6license%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="On The Road">
-<meta property="og:description" content="vue-pipeline    github: https:&#x2F;&#x2F;github.com&#x2F;jinfang134&#x2F;vue-pipeline demo: https:&#x2F;&#x2F;jinfang134.github.io&#x2F;vue-pipeline&#x2F;   vue-schedule-board    github: https:&#x2F;&#x2F;github.com&#x2F;jinfang134&#x2F;vue-schedule-board dem">
+<meta property="og:description" content="项目当中遇到一些问题，需要排查所有的依赖的license信息，需要将所有的依赖的license信息都列出来，由于依赖的继承和传递关系，依赖的数量非常庞大，因此手工来完成这个任务是不太现实，好在已经有很好的开源工具实现了这个功能．">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/01/08/tvgapAzdoi7MRSH.png">
-<meta property="og:image" content="https://i.loli.net/2021/01/08/UeuYazLsAB4mEor.png">
-<meta property="article:published_time" content="2016-02-01T20:29:57.000Z">
+<meta property="og:image" content="https://i.loli.net/2021/04/16/S6PNVCoMnj2tyFL.png">
+<meta property="article:published_time" content="2021-04-16T15:39:48.000Z">
 <meta property="article:modified_time" content="2021-04-16T08:17:30.444Z">
 <meta property="article:author" content="Zuo jinfang">
-<meta property="article:tag" content="blog,vue">
+<meta property="article:tag" content="license">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/01/08/tvgapAzdoi7MRSH.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/16/S6PNVCoMnj2tyFL.png">
 
-<link rel="canonical" href="https://jinfang134.github.io/opensource/">
+<link rel="canonical" href="https://jinfang134.github.io/2021/04/16/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6license%E7%AE%A1%E7%90%86/">
 
 
 <script id="page-configurations">
@@ -48,13 +47,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>开源项目 | On The Road
-</title>
+  <title>开源软件license管理 | On The Road</title>
   
 
 
@@ -202,58 +200,130 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">开源项目
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jinfang134.github.io/2021/04/16/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6license%E7%AE%A1%E7%90%86/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.loli.net/2021/01/08/HuxlfYDSzZaFN7U.jpg">
+      <meta itemprop="name" content="Zuo jinfang">
+      <meta itemprop="description" content="以梦为马，不负韶华">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="On The Road">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          开源软件license管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-16 15:39:48 / Modified: 08:17:30" itemprop="dateCreated datePublished" datetime="2021-04-16T15:39:48+00:00">2021-04-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7/" itemprop="url" rel="index"><span itemprop="name">应用技巧</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <p>项目当中遇到一些问题，需要排查所有的依赖的license信息，需要将所有的依赖的license信息都列出来，由于依赖的继承和传递关系，依赖的数量非常庞大，因此手工来完成这个任务是不太现实，好在已经有很好的开源工具实现了这个功能．</p>
+<a id="more"></a>
+
+<h2 id="java项目"><a href="#java项目" class="headerlink" title="java项目"></a>java项目</h2><p>修改gradle的配置，安装插件<a target="_blank" rel="noopener" href="https://github.com/jk1/Gradle-License-Report">Gradle-License-Report</a>．</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id(<span class="string">&quot;com.github.jk1.dependency-license-report&quot;</span>) version <span class="string">&quot;1.16&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">licenseReport &#123;</span><br><span class="line">    renderers = arrayOf&lt;ReportRenderer&gt;(InventoryHtmlReportRenderer(<span class="string">&quot;report.html&quot;</span>,<span class="string">&quot;Backend&quot;</span>),com.github.jk1.license.render.CsvReportRenderer())</span><br><span class="line">    filters = arrayOf&lt;DependencyFilter&gt;(LicenseBundleNormalizer())</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这款插件会为你生成你项目所有依赖的license报表信息，可以支持多种报表格式，包括csv,html,pdf等．<br>安装以后，会添加如下的task</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Reporting tasks</span><br><span class="line">---------------</span><br><span class="line">generateLicenseReport - Generates license report for all dependencies of this project and its subprojects</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>执行<code>./gradlew generateLicenseReport</code>以后，就可以在<code>build/reports/dependency-license</code>里找到新生成的report了，新生成的report如下图<br><img src="https://i.loli.net/2021/04/16/S6PNVCoMnj2tyFL.png" alt="license report">  </p>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>npm里有一个<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/license-checker">license-checker</a>可以很方便地查看每个依赖的license信息，使用前先进行全局安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g license-checker</span><br><span class="line">npm install -g yui-lint</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后运行如下的命令就可以生成相应的csv报告，注意在执行前要先运行一下<code>yarn install</code>, 确保所有的依赖都已经正确安装了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">license-checker --production --csv &gt; license.csv</span><br></pre></td></tr></table></figure><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
       
-      
-      <div class="post-body">
-          <h2 id="vue-pipeline"><a href="#vue-pipeline" class="headerlink" title="vue-pipeline"></a>vue-pipeline</h2><p><img src="https://i.loli.net/2021/01/08/tvgapAzdoi7MRSH.png" alt="picture 9">  </p>
-<ul>
-<li>github: <a target="_blank" rel="noopener" href="https://github.com/jinfang134/vue-pipeline">https://github.com/jinfang134/vue-pipeline</a></li>
-<li>demo: <a href="https://jinfang134.github.io/vue-pipeline/">https://jinfang134.github.io/vue-pipeline/</a></li>
-</ul>
-<hr>
-<h2 id="vue-schedule-board"><a href="#vue-schedule-board" class="headerlink" title="vue-schedule-board"></a>vue-schedule-board</h2><p><img src="https://i.loli.net/2021/01/08/UeuYazLsAB4mEor.png" alt="picture 10">  </p>
-<ul>
-<li>github: <a target="_blank" rel="noopener" href="https://github.com/jinfang134/vue-schedule-board">https://github.com/jinfang134/vue-schedule-board</a></li>
-<li>demo: <a href="https://jinfang134.github.io/vue-schedule-board/">https://jinfang134.github.io/vue-schedule-board/</a></li>
-</ul>
-<hr>
-<h2 id="node-cache-framework"><a href="#node-cache-framework" class="headerlink" title="node-cache-framework"></a>node-cache-framework</h2><ul>
-<li>github: <a target="_blank" rel="noopener" href="https://github.com/jinfang134/node-cache-framework">https://github.com/jinfang134/node-cache-framework</a></li>
-</ul>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+      <div style="display: inline-block;">
+        <img src="https://i.loli.net/2021/01/08/z9RYCLnZEBg3Gap.png" alt="Zuo jinfang WeChat Pay">
+        <p>WeChat Pay</p>
       </div>
       
-      
-      
-    </div>
-    
+      <div style="display: inline-block;">
+        <img src="https://i.loli.net/2021/01/08/EAJ4XbR3aLDNoft.png" alt="Zuo jinfang Alipay">
+        <p>Alipay</p>
+      </div>
 
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/license/" rel="tag"><i class="fa fa-tag"></i> license</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/03/vue%E6%96%87%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%AE%9A%E4%B9%89%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" rel="prev" title="vue文件不能跳转到定义的解决办法">
+      <i class="fa fa-chevron-left"></i> vue文件不能跳转到定义的解决办法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -305,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-pipeline"><span class="nav-number">1.</span> <span class="nav-text">vue-pipeline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-schedule-board"><span class="nav-number">2.</span> <span class="nav-text">vue-schedule-board</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-cache-framework"><span class="nav-number">3.</span> <span class="nav-text">node-cache-framework</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">java项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs"><span class="nav-number">2.</span> <span class="nav-text">nodejs</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -588,7 +658,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog-comment',
       owner       : 'jinfang134',
       admin       : ['jinfang134'],
-      id          : '714dc5b66fd0b1c737e4f2cd2696e75c',
+      id          : '5e102ae4559ee2134c59391276134587',
         language: '',
       distractionFreeMode: true
     });
